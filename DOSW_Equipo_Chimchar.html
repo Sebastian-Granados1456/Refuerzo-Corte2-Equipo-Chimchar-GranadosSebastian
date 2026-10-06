@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOSW Academia — SkyCampus</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg:#06080e;--sf:#0d1018;--sf2:#141923;--sf3:#1b2230;
+  --bd:#243048;--tx:#c8d8ec;--mu:#536880;
+  --c1:#f97316;--c2:#ea580c;--cg1:rgba(249,115,22,.18);
+  --m1:#3b82f6;--m2:#2563eb;--mg1:rgba(59,130,246,.18);
+  --i1:#a78bfa;--i2:#7c3aed;--ig1:rgba(167,139,250,.2);
+  --ok:#22c55e;--bl:#4a9eff;--rd:#f43f5e;
+  --mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:15px;line-height:1.72;min-height:100vh}
+
+.hero{position:relative;overflow:hidden;padding:3rem 2rem 2.2rem;text-align:center;border-bottom:1px solid var(--bd)}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% -10%,rgba(167,139,250,.08) 0%,transparent 65%)}
+.eyebrow{font-family:var(--mono);font-size:.63rem;letter-spacing:.2em;color:var(--mu);margin-bottom:1rem}
+.hero h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:.6rem}
+.sky{background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--mu);max-width:600px;margin:0 auto 1.8rem;font-size:.92rem}
+
+.enu-hero{max-width:720px;margin:0 auto 1.6rem;background:linear-gradient(135deg,rgba(167,139,250,.07),rgba(96,165,250,.04));border:1px solid rgba(167,139,250,.22);border-radius:14px;padding:1.3rem 1.6rem;text-align:left}
+.enu-hero .el{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--i1);margin-bottom:.5rem;display:block}
+.enu-hero h2{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.enu-hero p{font-size:.86rem;color:var(--mu);line-height:1.6}
+
+.evo-sel{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
+.eb{display:flex;align-items:center;gap:.55rem;padding:.55rem 1.3rem;border-radius:9px;border:1.5px solid transparent;font-family:var(--sans);font-size:.87rem;font-weight:600;cursor:pointer;background:var(--sf2);color:var(--mu);transition:all .2s}
+.eb span{font-size:1.2rem}
+.eb.ch{border-color:rgba(249,115,22,.25)}.eb.ch.active,.eb.ch:hover{background:rgba(249,115,22,.1);color:#fed7aa;border-color:var(--c1);box-shadow:0 0 20px var(--cg1)}
+.eb.mo{border-color:rgba(59,130,246,.25)}.eb.mo.active,.eb.mo:hover{background:rgba(59,130,246,.1);color:#bfdbfe;border-color:var(--m1);box-shadow:0 0 20px var(--mg1)}
+.eb.inf{border-color:rgba(167,139,250,.25)}.eb.inf.active,.eb.inf:hover{background:rgba(167,139,250,.1);color:#ddd6fe;border-color:var(--i1);box-shadow:0 0 20px var(--ig1)}
+
+.gbar{max-width:860px;margin:.6rem auto 0;background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:.85rem 1.3rem}
+.grow{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.glb{font-family:var(--mono);font-size:.7rem;color:var(--mu)}.gv{font-family:var(--mono);font-size:.7rem;color:var(--tx)}
+.gt{height:5px;background:var(--sf3);border-radius:3px;overflow:hidden}
+.gf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--c1),var(--i1));transition:width .4s}
+
+main{max-width:900px;margin:0 auto;padding:2rem 1.2rem 5rem}
+.ls{display:none}.ls.active{display:block}
+
+.lvb{display:flex;align-items:flex-start;gap:1.1rem;padding:1.2rem 1.4rem;border-radius:12px;border:1px solid;margin-bottom:.8rem}
+.lvb.ch{background:rgba(249,115,22,.05);border-color:rgba(249,115,22,.28)}
+.lvb.mo{background:rgba(59,130,246,.05);border-color:rgba(59,130,246,.28)}
+.lvb.inf{background:rgba(167,139,250,.06);border-color:rgba(167,139,250,.28)}
+.lve{font-size:2.3rem;flex-shrink:0;line-height:1}
+.lvn{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.lvd{font-size:.83rem;color:var(--mu)}
+
+.enu{background:var(--sf);border:1px solid var(--bd);border-radius:11px;margin-bottom:1.4rem;overflow:hidden}
+.enu-h{display:flex;align-items:center;gap:.7rem;padding:.8rem 1.1rem;background:var(--sf2);cursor:pointer;user-select:none}
+.enu-h:hover{background:var(--sf3)}
+.epill{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;padding:.18rem .5rem;border-radius:4px;font-weight:600;flex-shrink:0}
+.ch .epill{background:rgba(249,115,22,.13);color:var(--c1)}
+.mo .epill{background:rgba(59,130,246,.13);color:var(--m1)}
+.inf .epill{background:rgba(167,139,250,.13);color:var(--i1)}
+.etit{font-weight:600;font-size:.9rem;flex:1;color:var(--tx)}
+.enu-b{padding:1rem 1.3rem;font-size:.87rem;line-height:1.67;border-top:1px solid var(--bd)}
+.enu-b p{margin-bottom:.5rem;color:var(--mu)}.enu-b strong{color:var(--tx)}
+.enota{margin-top:.7rem;padding:.55rem .85rem;border-left:3px solid;border-radius:0 7px 7px 0;font-size:.83rem}
+.ch .enota{border-color:var(--c1);background:rgba(249,115,22,.06);color:var(--tx)}
+.mo .enota{border-color:var(--m1);background:rgba(59,130,246,.06);color:var(--tx)}
+.inf .enota{border-color:var(--i1);background:rgba(167,139,250,.06);color:var(--tx)}
+
+.lp{background:var(--sf);border:1px solid var(--bd);border-radius:9px;padding:.75rem 1.1rem;margin-bottom:1.8rem}
+.lprow{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem}
+.lplb{font-family:var(--mono);font-size:.7rem;color:var(--mu)}.lpv{font-family:var(--mono);font-size:.7rem;color:var(--tx)}
+.lpt{height:4px;background:var(--sf3);border-radius:2px;overflow:hidden}
+.lpf{height:100%;border-radius:2px;transition:width .4s}
+.ch .lpf{background:linear-gradient(90deg,var(--c1),var(--c2))}
+.mo .lpf{background:linear-gradient(90deg,var(--m1),var(--m2))}
+.inf .lpf{background:linear-gradient(90deg,var(--i1),var(--i2))}
+
+.tdiv{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--mu);text-transform:uppercase;padding:.25rem 0 .45rem;border-bottom:1px solid var(--bd);margin-bottom:.7rem;margin-top:2rem}
+
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:9px;margin-bottom:.6rem;overflow:hidden}
+.ch-hd{display:flex;align-items:center;gap:.75rem;padding:.8rem 1rem;cursor:pointer;transition:background .15s;user-select:none}
+.ch-hd:hover{background:var(--sf2)}
+.ico{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.level-chimchar .ico{background:rgba(249,115,22,.12)}
+.level-monferno .ico{background:rgba(59,130,246,.12)}
+.level-infernape .ico{background:rgba(167,139,250,.12)}
+.cm{flex:1;min-width:0}.ct{font-weight:600;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--tx)}.cs{font-size:.73rem;color:var(--mu);margin-top:.1rem}
+.db{display:flex;align-items:center;gap:.35rem;padding:.28rem .65rem;border-radius:5px;border:1px solid;font-family:var(--sans);font-size:.73rem;font-weight:600;cursor:pointer;flex-shrink:0;transition:all .18s;white-space:nowrap}
+.db.undone{border-color:var(--bd);background:transparent;color:var(--mu)}.db.undone:hover{border-color:var(--ok);color:var(--ok)}.db.done{border-color:var(--ok);background:rgba(34,197,94,.1);color:var(--ok)}
+.chv{color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0}.card.open .chv{transform:rotate(90deg)}
+.cb{display:none;padding:0 1.1rem 1.2rem;border-top:1px solid var(--bd)}.card.open .cb{display:block;padding-top:1rem}
+
+h3{font-size:.88rem;font-weight:600;color:var(--i1);margin:1rem 0 .4rem}h3:first-child{margin-top:0}
+h4{font-size:.75rem;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin:.85rem 0 .3rem}
+p{font-size:.86rem;margin-bottom:.5rem;color:var(--tx)}ul,ol{padding-left:1.35rem;margin-bottom:.65rem}li{font-size:.86rem;margin-bottom:.26rem;color:var(--tx)}strong{color:#fff;font-weight:600}
+code{font-family:var(--mono);background:rgba(255,255,255,.06);padding:.06em .32em;border-radius:3px;font-size:.78em;color:#93c5fd}
+pre{background:#04060b;border:1px solid var(--bd);border-radius:7px;padding:.85rem 1rem;overflow-x:auto;margin:.65rem 0 .85rem;font-family:var(--mono);font-size:.76rem;line-height:1.65;color:#c9d1d9}
+.kw{color:#ff7b72}.ty{color:#79c0ff}.st{color:#a5d6ff}.cmt{color:#3d5066;font-style:italic}.fn{color:#d2a8ff}.nu{color:#f2cc60}.ok2{color:#3fb950}.er{color:#f85149}
+.nt{border-left:3px solid;border-radius:0 6px 6px 0;padding:.6rem .9rem;margin:.65rem 0;font-size:.84rem}
+.nt strong{display:block;font-size:.67rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem}
+.nt.warn{border-color:var(--rd);background:rgba(244,63,94,.06)}.nt.warn strong{color:var(--rd)}
+.nt.tip{border-color:var(--ok);background:rgba(34,197,94,.06)}.nt.tip strong{color:var(--ok)}
+.nt.info{border-color:var(--bl);background:rgba(74,158,255,.06)}.nt.info strong{color:var(--bl)}
+.nt.gold{border-color:var(--i1);background:rgba(167,139,250,.07)}.nt.gold strong{color:var(--i1)}
+table{width:100%;border-collapse:collapse;margin:.55rem 0;font-size:.8rem}
+th{background:var(--sf2);padding:.4rem .7rem;text-align:left;color:var(--mu);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--bd)}
+td{padding:.4rem .7rem;border:1px solid var(--bd);vertical-align:top;color:var(--tx)}tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.55rem 0}@media(max-width:560px){.two{grid-template-columns:1fr}}
+.box{background:var(--sf2);border:1px solid var(--bd);border-radius:7px;padding:.7rem .85rem}
+.box h4{margin-top:0;color:var(--tx);text-transform:none;letter-spacing:0;font-size:.84rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;display:flex;gap:.65rem;align-items:flex-start;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);color:var(--tx)}
+.steps li::before{content:counter(s);width:19px;height:19px;border-radius:50%;background:var(--sf2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-family:var(--mono);color:var(--i1);flex-shrink:0;margin-top:.2rem}
+.lkb{text-align:center;padding:3rem 2rem;background:var(--sf);border:1px dashed var(--bd);border-radius:11px;margin:.5rem 0}
+.lkb .lki{font-size:2.8rem;margin-bottom:.8rem;display:block}
+.lkb h3{color:#fff;font-size:1rem;margin-bottom:.4rem;text-transform:none;letter-spacing:0}
+.lkb p{color:var(--mu);font-size:.84rem;max-width:380px;margin:0 auto}
+.badge{text-align:center;padding:1.8rem;border:1px solid;border-radius:11px;margin-top:1.5rem}
+.badge .bi{font-size:3rem;display:block;margin-bottom:.6rem}
+.badge h3{font-size:1.1rem;margin-bottom:.35rem;text-transform:none;letter-spacing:0}
+.badge p{font-size:.85rem}
+.badge.ch{background:rgba(249,115,22,.05);border-color:rgba(249,115,22,.3)}.badge.ch h3{color:var(--m1)}.badge.ch p{color:var(--mu)}
+.badge.mo{background:rgba(59,130,246,.05);border-color:rgba(59,130,246,.3)}.badge.mo h3{color:var(--i1)}.badge.mo p{color:var(--mu)}
+.badge.inf{background:rgba(167,139,250,.07);border-color:rgba(167,139,250,.3)}.badge.inf h3{color:var(--i1)}.badge.inf p{color:var(--mu)}
+footer{text-align:center;padding:2.5rem 1rem;color:var(--mu);font-size:.75rem;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="eyebrow">DOSW Company · ECI · 2026-2 · Prof. Andrés Cantór Urrego</div>
+  <h1><span class="sky">SkyCampus</span> Academia</h1>
+  <p class="hero-sub">Un sistema de drones de reparto que evoluciona contigo. El mismo proyecto, el mismo código, más complejidad en cada nivel. Entiende el progreso.</p>
+  <div class="enu-hero">
+    <span class="el">ENUNCIADO BASE DEL PROYECTO</span>
+    <h2>🚁 SkyCampus — Sistema de drones de reparto de la ECI</h2>
+    <p>La Escuela Colombiana de Ingeniería quiere modernizar el reparto interno de documentos, equipos y materiales entre bloques usando una flota de drones autónomos. Los operadores asignan misiones, los drones ejecutan y el sistema registra todo. Este es el sistema que construirás en los tres niveles, siempre el mismo, madurando con cada evolución.</p>
+  </div>
+  <div class="evo-sel">
+    <button class="eb ch active" onclick="setLevel('chimchar')"><span>🔥</span>Chimchar — Reparto básico</button>
+    <button class="eb mo" onclick="setLevel('monferno')"><span>⚡</span>Monferno — Flota autónoma</button>
+    <button class="eb inf" onclick="setLevel('infernape')"><span>👑</span>Infernape — Red multi-sede</button>
+  </div>
+</div>
+<div class="gbar">
+  <div class="grow"><span class="glb">Progreso total</span><span class="gv" id="gv">0 / 42 retos</span></div>
+  <div class="gt"><div class="gf" id="gf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="ls level-chimchar active" id="level-chimchar">
+<div class="lvb ch"><div class="lve">&#128293;</div><div>
+  <div class="lvn">Chimchar &mdash; SkyCampus MVP: reparto b&aacute;sico en el campus</div>
+  <div class="lvd">Aplica los fundamentos al sistema m&aacute;s simple posible. Completa los 14 retos para evolucionar.</div>
+</div></div>
+
+<div class="enu ch">
+  <div class="enu-h" onclick="toggleEnu(this)">
+    <span class="epill">ENUNCIADO CHIMCHAR</span>
+    <span class="etit">SkyCampus MVP &mdash; 5 drones, destinos fijos, operador manual</span>
+    <span style="color:var(--mu)">&#8250;</span>
+  </div>
+  <div class="enu-b">
+    <p><strong>Contexto:</strong> La ECI tiene 5 drones del mismo modelo (DJI Mini 3). Solo transportan documentos (sobres y carpetas). Los destinos posibles son fijos: Bloque A, Bloque B, Bloque C, Bloque D y la Biblioteca. Un operador selecciona manualmente qu&eacute; drone asignar a cada misi&oacute;n.</p>
+    <p><strong>Flujo b&aacute;sico:</strong> El operador registra una solicitud de reparto (origen, destino, tipo de documento) &rarr; revisa qu&eacute; drones est&aacute;n disponibles y con bater&iacute;a suficiente &rarr; asigna uno manualmente &rarr; el drone ejecuta la misi&oacute;n por ruta predefinida &rarr; el operador confirma la entrega.</p>
+    <p><strong>Los objetos del sistema:</strong></p>
+    <p><code>Drone(id:String, modelo:String, bateria:int, disponible:boolean, ubicacion:String)</code></p>
+    <p><code>Mision(id:String, drone:Drone, origen:String, destino:String, tipoCarga:TipoCarga, estado:EstadoMision)</code></p>
+    <p><code>TipoCarga: Enum(SOBRE, CARPETA, LIBRO)</code>&nbsp;&nbsp;&nbsp;<code>EstadoMision: Enum(PENDIENTE, EN_VUELO, ENTREGADA, FALLIDA)</code></p>
+    <div class="enota">&#128161; No agregues funcionalidades que no est&eacute;n en el MVP. El sistema es simple a prop&oacute;sito &mdash; el valor est&aacute; en aplicar bien los fundamentos.</div>
+  </div>
+</div>
+
+<div class="lp ch">
+  <div class="lprow"><span class="lplb">Retos Chimchar completados</span><span class="lpv" id="ch-stat">0 / 14</span></div>
+  <div class="lpt"><div class="lpf" id="ch-fill" style="width:0%"></div></div>
+</div>
+
+<div class="tdiv">01 &middot; Streams &amp; Lambdas</div>
+<div class="card" id="ch-streams">
+<div class="ch-hd" onclick="toggle('ch-streams')">
+  <div class="ico">&#9889;</div><div class="cm">
+  <div class="ct">Filtrar y ordenar la flota de drones disponibles</div>
+  <div class="cs">filter &middot; map &middot; sorted &middot; collect &middot; anyMatch &middot; count</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-streams')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El contexto del reto</h3>
+<p>El operador necesita consultar la flota antes de asignar una misi&oacute;n: ver los drones disponibles, ordenarlos por bater&iacute;a y saber cu&aacute;ntos tienen suficiente energ&iacute;a.</p>
+<h3>El modelo que usar&aacute;s</h3>
+<pre><span class="kw">record</span> <span class="ty">Drone</span>(
+    <span class="ty">String</span>  id,
+    <span class="ty">String</span>  modelo,
+    <span class="kw">int</span>     bateria,       <span class="cmt">// 0-100%</span>
+    <span class="kw">boolean</span> disponible,
+    <span class="ty">String</span>  ubicacion      <span class="cmt">// "Bloque A", "Bloque B", etc.</span>
+) {}
+
+<span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt; flota = <span class="ty">List</span>.<span class="fn">of</span>(
+    <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-01"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">85</span>, <span class="kw">true</span>,  <span class="st">"Bloque A"</span>),
+    <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-02"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">42</span>, <span class="kw">false</span>, <span class="st">"Biblioteca"</span>),
+    <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-03"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">91</span>, <span class="kw">true</span>,  <span class="st">"Bloque C"</span>),
+    <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-04"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">18</span>, <span class="kw">true</span>,  <span class="st">"Bloque B"</span>),
+    <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-05"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">67</span>, <span class="kw">true</span>,  <span class="st">"Bloque D"</span>)
+);</pre>
+<div class="nt warn"><strong>&#9888; Error de Chimchar</strong>Usar un bucle <code>for</code> cuando el enunciado pide Streams. Un Stream se consume UNA sola vez; no lo reutilices despu&eacute;s de la operaci&oacute;n terminal.</div>
+<h3>Operaciones clave</h3>
+<table>
+<tr><th>Operaci&oacute;n</th><th>Tipo</th><th>Para qu&eacute; sirve en SkyCampus</th></tr>
+<tr><td><code>filter(pred)</code></td><td>Intermedia</td><td>Mostrar solo drones disponibles</td></tr>
+<tr><td><code>map(func)</code></td><td>Intermedia</td><td>Extraer solo el ID o la bater&iacute;a de cada drone</td></tr>
+<tr><td><code>sorted(comp)</code></td><td>Intermedia</td><td>Ordenar por bater&iacute;a de mayor a menor</td></tr>
+<tr><td><code>collect(toList())</code></td><td>Terminal</td><td>Obtener la lista resultado</td></tr>
+<tr><td><code>count()</code></td><td>Terminal</td><td>Cu&aacute;ntos drones tienen bater&iacute;a &ge;50%</td></tr>
+<tr><td><code>anyMatch(pred)</code></td><td>Terminal</td><td>&iquest;Hay alg&uacute;n drone disponible en el Bloque A?</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Chimchar &mdash; 4 consultas sobre la flota</strong>
+1. Lista de IDs de drones disponibles con bater&iacute;a &ge;50%, ordenados de mayor a menor bater&iacute;a.<br>
+2. ¿Hay alg&uacute;n drone disponible ubicado en "Bloque C"?<br>
+3. Cu&aacute;ntos drones tienen bater&iacute;a cr&iacute;tica (menos del 20%), independientemente de su disponibilidad.<br>
+4. Lista con el ID y la bater&iacute;a de cada drone (formato <code>"D-01: 85%"</code>), para todos los drones.<br>
+Todo con Streams. Sin for.</div>
+</div></div>
+
+<div class="tdiv">02 &middot; GitHub y GitFlow</div>
+<div class="card" id="ch-git">
+<div class="ch-hd" onclick="toggle('ch-git')">
+  <div class="ico">&#127807;</div><div class="cm">
+  <div class="ct">Crear el repositorio de SkyCampus con flujo correcto</div>
+  <div class="cs">init &middot; develop &middot; feature/ApellidoNombre &middot; commit descriptivo &middot; merge</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-git')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El contexto</h3>
+<p>El equipo de SkyCampus empieza el repositorio. Si no configuran el flujo desde el primer d&iacute;a, los conflictos del sprint 1 arruinar&aacute;n el trabajo de todos.</p>
+<pre><span class="cmt"># 1. Crear repo SkyCampus-ECI en GitHub</span>
+<span class="cmt"># 2. Configurar identidad</span>
+git config --global user.name <span class="st">"Tu Nombre"</span>
+git config --global user.email <span class="st">"tu@escuelaing.edu.co"</span>
+
+<span class="cmt"># 3. Crear develop desde main</span>
+git checkout -b develop
+git push origin develop
+
+<span class="cmt"># 4. Tu rama feature — SIEMPRE desde develop</span>
+git checkout develop
+git checkout -b feature/CantoUrrego-modelo-drone
+
+<span class="cmt"># 5. Ciclo de trabajo</span>
+git add src/model/Drone.java
+git commit -m <span class="st">"feat: agrega record Drone con campos id, bateria, disponible y ubicacion"</span>
+git add src/model/Mision.java
+git commit -m <span class="st">"feat: agrega record Mision con TipoCarga y EstadoMision"</span>
+git push origin feature/CantoUrrego-modelo-drone
+
+<span class="cmt"># 6. Integrar a develop (NUNCA directamente a main)</span>
+git checkout develop
+git pull origin develop
+git merge feature/CantoUrrego-modelo-drone
+git push origin develop</pre>
+<div class="nt warn"><strong>&#9888; Los 3 errores que Chimchar siempre comete</strong>
+Commit con mensaje <code>"cambios"</code> &mdash; describe QU&Eacute; hiciste y EN QU&Eacute; clase.<br>
+Push directo a <code>main</code> sin pasar por <code>develop</code>.<br>
+Trabajar en <code>develop</code> directamente sin crear rama <code>feature/</code>.</div>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Crea el repo <code>SkyCampus-ECI-[TuApellido]</code>. Configura main y develop. Crea <code>feature/[Apellido]-modelo-flota</code>. Agrega los records <code>Drone</code>, <code>Mision</code>, <code>TipoCarga</code> y <code>EstadoMision</code> con 2 commits separados y descriptivos. Agrega el c&oacute;digo de Streams del reto 01 en un tercer commit. Haz merge a develop. Comparte el link.</div>
+</div></div>
+
+<div class="tdiv">03 &middot; Patrones de Dise&ntilde;o</div>
+<div class="card" id="ch-patrones">
+<div class="ch-hd" onclick="toggle('ch-patrones')">
+  <div class="ico">&#129513;</div><div class="cm">
+  <div class="ct">Elegir el patr&oacute;n correcto para cada problema de SkyCampus MVP</div>
+  <div class="cs">Builder &middot; Strategy &middot; Chain of Responsibility &middot; Observer &middot; Reconocer el problema</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-patrones')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<div class="nt gold"><strong>Regla de oro</strong>Lee el problema, identifica QU&Eacute; duele, luego el patr&oacute;n. Nunca al rev&eacute;s.</div>
+<h3>Tres problemas reales del MVP de SkyCampus</h3>
+<p><strong>Problema 1:</strong> Una <code>Mision</code> tiene campos obligatorios (drone, origen, destino) y opcionales (prioridad, notas del operador, hora m&aacute;xima de entrega). Crear un constructor para cada combinaci&oacute;n es insostenible y confuso.</p>
+<p><strong>Problema 2:</strong> Antes de lanzar el drone, el sistema debe validar en orden: (a) &iquest;el drone tiene bater&iacute;a suficiente? (b) &iquest;el destino es v&aacute;lido? (c) &iquest;la carga no supera el peso m&aacute;ximo? Cada validaci&oacute;n decide si pasa o rechaza.</p>
+<p><strong>Problema 3:</strong> El sistema debe asignar el drone &oacute;ptimo para cada misi&oacute;n. El MVP asigna el de mayor bater&iacute;a. En el futuro podr&iacute;a ser el m&aacute;s cercano, o el m&aacute;s r&aacute;pido. El algoritmo debe ser intercambiable sin tocar el resto del c&oacute;digo.</p>
+<h3>Tabla de reconocimiento</h3>
+<table>
+<tr><th>Si el enunciado dice...</th><th>Patr&oacute;n</th><th>Por qu&eacute;</th></tr>
+<tr><td>"objeto con muchos campos opcionales"</td><td>Builder</td><td>Construye paso a paso, solo los campos necesarios</td></tr>
+<tr><td>"cadena de validaciones, cada una decide si pasa"</td><td>Chain of Responsibility</td><td>Cada validador procesa o pasa al siguiente</td></tr>
+<tr><td>"algoritmo intercambiable sin tocar el c&oacute;digo base"</td><td>Strategy</td><td>Cada algoritmo en su clase, intercambiables</td></tr>
+<tr><td>"notificar autom&aacute;ticamente a varios cuando algo cambia"</td><td>Observer</td><td>El sujeto avisa a todos sus suscriptores</td></tr>
+<tr><td>"crear distintos tipos de X sin acoplarse al concreto"</td><td>Factory Method</td><td>La f&aacute;brica decide qu&eacute; tipo crear</td></tr>
+<tr><td>"agregar funcionalidad sin tocar la clase base"</td><td>Decorator</td><td>Envuelve el objeto a&ntilde;adiendo comportamiento</td></tr>
+</table>
+<h3>Builder para Mision &mdash; ejemplo m&iacute;nimo</h3>
+<pre><span class="kw">class</span> <span class="ty">MisionBuilder</span> {
+    <span class="kw">private</span> <span class="ty">Drone</span>  drone;
+    <span class="kw">private</span> <span class="ty">String</span> origen, destino;
+    <span class="kw">private</span> <span class="ty">String</span> notas    = <span class="st">""</span>;      <span class="cmt">// opcional</span>
+    <span class="kw">private</span> <span class="kw">int</span>    prioridad = <span class="nu">3</span>;      <span class="cmt">// opcional, default medio</span>
+
+    <span class="kw">public</span> <span class="ty">MisionBuilder</span> <span class="fn">drone</span>(<span class="ty">Drone</span> d)    { this.drone   = d;  <span class="kw">return this</span>; }
+    <span class="kw">public</span> <span class="ty">MisionBuilder</span> <span class="fn">origen</span>(<span class="ty">String</span> o)  { this.origen  = o;  <span class="kw">return this</span>; }
+    <span class="kw">public</span> <span class="ty">MisionBuilder</span> <span class="fn">destino</span>(<span class="ty">String</span> d) { this.destino = d;  <span class="kw">return this</span>; }
+    <span class="kw">public</span> <span class="ty">MisionBuilder</span> <span class="fn">notas</span>(<span class="ty">String</span> n)   { this.notas   = n;  <span class="kw">return this</span>; }
+    <span class="kw">public</span> <span class="ty">Mision</span>        <span class="fn">build</span>() {
+        <span class="kw">if</span> (drone == <span class="kw">null</span> || origen == <span class="kw">null</span> || destino == <span class="kw">null</span>)
+            <span class="kw">throw new</span> <span class="ty">IllegalStateException</span>(<span class="st">"drone, origen y destino son obligatorios"</span>);
+        <span class="kw">return new</span> <span class="ty">Mision</span>(drone, origen, destino, notas, prioridad);
+    }
+}
+<span class="cmt">// Uso</span>
+<span class="ty">Mision</span> m = <span class="kw">new</span> <span class="ty">MisionBuilder</span>()
+    .<span class="fn">drone</span>(d03).<span class="fn">origen</span>(<span class="st">"Bloque C"</span>).<span class="fn">destino</span>(<span class="st">"Biblioteca"</span>)
+    .<span class="fn">notas</span>(<span class="st">"Urgente: examen mañana"</span>)
+    .<span class="fn">build</span>();</pre>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Para cada uno de los 3 problemas: (a) nombra el patr&oacute;n, (b) en una oraci&oacute;n di por qu&eacute;, (c) implementa la estructura m&iacute;nima en Java usando los objetos de SkyCampus.<br>Para el Problema 2 (Chain), los 3 validadores son: <code>ValidadorBateria</code> (rechaza si &lt;30%), <code>ValidadorDestino</code> (rechaza si destino no existe en la lista), <code>ValidadorCarga</code> (rechaza si el tipo de carga supera la capacidad del drone).</div>
+</div></div>
+
+<div class="tdiv">04 &middot; Principios SOLID</div>
+<div class="card" id="ch-solid">
+<div class="ch-hd" onclick="toggle('ch-solid')">
+  <div class="ico">&#129395;</div><div class="cm">
+  <div class="ct">El GestorDrone viola SOLID &mdash; identif&iacute;calo y resu&eacute;lvelo</div>
+  <div class="cs">SRP &middot; OCP &middot; LSP &middot; ISP &middot; DIP</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-solid')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El c&oacute;digo con problemas</h3>
+<pre><span class="kw">class</span> <span class="ty">GestorDrone</span> {
+
+    <span class="kw">public void</span> <span class="fn">asignarMision</span>(<span class="ty">Drone</span> d, <span class="ty">Mision</span> m) {
+        <span class="cmt">// lógica de asignación</span>
+    }
+
+    <span class="kw">public void</span> <span class="fn">guardarEnBD</span>(<span class="ty">Mision</span> m) {
+        <span class="cmt">// abre conexión MySQL directo aquí</span>
+        <span class="ty">Connection</span> c = <span class="ty">DriverManager</span>.<span class="fn">getConnection</span>(
+            <span class="st">"jdbc:mysql://localhost/skycampus"</span>, <span class="st">"root"</span>, <span class="st">"1234"</span>);
+    }
+
+    <span class="kw">public void</span> <span class="fn">enviarAlertaEmail</span>(<span class="ty">String</span> operador, <span class="ty">String</span> msg) {
+        <span class="cmt">// lógica SMTP directo aquí</span>
+    }
+
+    <span class="kw">public void</span> <span class="fn">generarReportePDF</span>(<span class="ty">List</span>&lt;<span class="ty">Mision</span>&gt; misiones) {
+        <span class="cmt">// genera PDF con iText aquí</span>
+    }
+
+    <span class="kw">public void</span> <span class="fn">calcularRuta</span>(<span class="ty">String</span> origen, <span class="ty">String</span> destino, <span class="ty">String</span> tipo) {
+        <span class="kw">if</span> (tipo.<span class="fn">equals</span>(<span class="st">"DIRECTO"</span>))    { <span class="cmt">/* calcula ruta directa */</span> }
+        <span class="kw">else if</span> (tipo.<span class="fn">equals</span>(<span class="st">"EVITAR"</span>)) { <span class="cmt">/* evita edificios altos */</span> }
+        <span class="cmt">// cada nuevo tipo de ruta requiere modificar esta clase</span>
+    }
+}</pre>
+<h3>Los 5 principios aplicados al GestorDrone</h3>
+<table>
+<tr><th>P.</th><th>Principio</th><th>&iquest;Violado?</th><th>D&oacute;nde</th></tr>
+<tr><td><strong>S</strong></td><td>Una clase = una raz&oacute;n para cambiar</td><td>S&iacute;</td><td>Tiene 5 responsabilidades: asignar, guardar, alertar, reportar y calcular ruta</td></tr>
+<tr><td><strong>O</strong></td><td>Abierto para extender, cerrado para modificar</td><td>S&iacute;</td><td><code>calcularRuta</code>: cada nuevo tipo de ruta requiere modificar la clase</td></tr>
+<tr><td><strong>L</strong></td><td>La subclase reemplaza al padre sin romper nada</td><td>No directo</td><td>No hay herencia en este fragmento</td></tr>
+<tr><td><strong>I</strong></td><td>No forzar m&eacute;todos que no se usan</td><td>Posible</td><td>Un objeto que solo quiere asignar misiones arrastra guardar y reportar</td></tr>
+<tr><td><strong>D</strong></td><td>Depender de abstracciones, no de concretos</td><td>S&iacute;</td><td><code>DriverManager.getConnection</code> hardcodeado: acoplamiento a MySQL</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>1. Para cada principio violado, escribe en una oraci&oacute;n por qu&eacute; es una violaci&oacute;n.<br>2. Redise&ntilde;a separando en: <code>AsignadorMision</code>, <code>RepositorioMision</code> (interfaz), <code>AlertaOperador</code> (interfaz), <code>GeneradorReporte</code>, <code>EstrategiaRuta</code> (interfaz con implementaciones). Cada clase debe tener UNA sola raz&oacute;n para cambiar.</div>
+</div></div>
+
+<div class="tdiv">05 &middot; Diagrama de Contexto C4</div>
+<div class="card" id="ch-contexto">
+<div class="ch-hd" onclick="toggle('ch-contexto')">
+  <div class="ico">&#128506;</div><div class="cm">
+  <div class="ct">C&oacute;mo encaja SkyCampus MVP en el mundo de la ECI</div>
+  <div class="cs">Sistema &middot; Actores &middot; Sistemas externos &middot; Flujos etiquetados</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-contexto')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El Nivel 1 del Modelo C4</h3>
+<p>Muestra el sistema como caja negra. Responde: &iquest;qui&eacute;nes interact&uacute;an? &iquest;con qu&eacute; otros sistemas?</p>
+<pre><span class="cmt">SkyCampus MVP &mdash; actores y sistemas:
+Actores: Operador de drones, Solicitante (quien pide el reparto), Admin
+Sistemas externos del MVP: NINGUNO
+  (los drones son controlados directamente, sin API externa en el MVP)
+
+El diagrama es sencillo porque el MVP es sencillo.
+Un diagrama honesto es mejor que uno con integraciones inventadas.</span>
+
+[ Operador   ] &mdash;&mdash; Asigna misiones / Monitorea flota &mdash;&mdash;&rarr; [ SkyCampus App ]
+[ Solicitante] &mdash;&mdash; Registra solicitud de reparto &mdash;&mdash;&mdash;&rarr; [ SkyCampus App ]
+[ Admin      ] &mdash;&mdash; Configura destinos y flota &mdash;&mdash;&mdash;&mdash;&rarr; [ SkyCampus App ]</pre>
+<div class="nt info"><strong>Observaci&oacute;n clave</strong>En el MVP no hay sistemas externos porque los drones son controlados localmente y no hay integraciones de red. Esto cambia en Monferno (monitoreo remoto) e Infernape (control aut&oacute;nomo multi-sede).</div>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Dibuja el diagrama de contexto del SkyCampus MVP en draw.io o Lucidchart. En cada flecha entre actor y sistema indica QU&Eacute; datos fluyen en QU&Eacute; direcci&oacute;n (&iquest;el solicitante env&iacute;a el destino? &iquest;el sistema le devuelve el c&oacute;digo de misi&oacute;n?). Exporta la imagen y s&uacute;bela al repositorio de GitHub.</div>
+</div></div>
+
+<div class="tdiv">06 &middot; RF vs RNF y Prioridad MoSCoW</div>
+<div class="card" id="ch-rf">
+<div class="ch-hd" onclick="toggle('ch-rf')">
+  <div class="ico">&#128203;</div><div class="cm">
+  <div class="ct">Escribir los RF y RNF del SkyCampus MVP correctamente</div>
+  <div class="cs">RF &middot; RNF medible &middot; MoSCoW aplicado &middot; Diferencia clara</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-rf')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<div class="two">
+<div class="box"><h4>Requerimiento Funcional</h4><p><strong>Qu&eacute; hace el sistema.</strong> Acci&oacute;n observable desde el punto de vista del usuario.<br><em>El sistema debe permitir al operador ver los drones disponibles con su bater&iacute;a actual.</em></p></div>
+<div class="box"><h4>Requerimiento No Funcional</h4><p><strong>C&oacute;mo debe ser el sistema.</strong> Calidad con m&eacute;trica concreta.<br><em>El panel de monitoreo debe actualizarse en menos de 3 segundos tras un cambio de estado en cualquier drone.</em></p></div>
+</div>
+<div class="nt warn"><strong>&#9888; RNF sin m&eacute;trica = RNF in&uacute;til</strong>"El sistema debe ser confiable" no es un RNF. &iquest;Confiable c&oacute;mo? &iquest;Medido c&oacute;mo? Todo RNF necesita: un n&uacute;mero, una condici&oacute;n y una forma de verificarlo.</div>
+<h3>MoSCoW para el MVP de SkyCampus</h3>
+<table>
+<tr><th>Categor&iacute;a</th><th>Ejemplos en SkyCampus MVP</th></tr>
+<tr><td><strong>Must Have</strong></td><td>Ver flota disponible, Registrar misi&oacute;n, Asignar drone manualmente</td></tr>
+<tr><td><strong>Should Have</strong></td><td>Filtrar drones por bater&iacute;a, Ver historial de misiones del d&iacute;a</td></tr>
+<tr><td><strong>Could Have</strong></td><td>Exportar reporte de misiones, Notificar al solicitante por correo</td></tr>
+<tr><td><strong>Won't Have</strong></td><td>Asignaci&oacute;n autom&oacute;tica, Ruta optimizada (van en Monferno)</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Para el SkyCampus MVP escribe: 3 RF (actor + acci&oacute;n + resultado observable) y 3 RNF con m&eacute;trica concreta y realista para el MVP. Aplica MoSCoW a los 6, justificando cada categor&iacute;a con una oraci&oacute;n.</div>
+</div></div>
+
+<div class="tdiv">07 &middot; Plantilla DOSW</div>
+<div class="card" id="ch-plantilla">
+<div class="ch-hd" onclick="toggle('ch-plantilla')">
+  <div class="ico">&#128196;</div><div class="cm">
+  <div class="ct">Plantilla DOSW para el RF "Registrar misi&oacute;n de reparto"</div>
+  <div class="cs">Tipos correctos &middot; Sin "Seleccionador" &middot; Precondici&oacute;n vs Regla de negocio</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-plantilla')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<div class="nt warn"><strong>&#9888; Los 2 errores que m&aacute;s penalizan</strong>
+<strong>"Seleccionador"</strong> como tipo de campo: es un elemento de UI, no un tipo de dato. Usa <code>String</code>, <code>Integer</code>, <code>Enum(A,B)</code>.<br>
+<strong>"Lista de objetos"</strong>: nunca. Siempre especifica <code>List&lt;Drone(id:String, bateria:int)&gt;</code> con los atributos.</div>
+<table>
+<tr><th>Campo</th><th>Qu&eacute; va</th><th>Ejemplo para SkyCampus</th></tr>
+<tr><td>C&oacute;digo</td><td>Sigla del proyecto + n&uacute;mero</td><td>SC-01</td></tr>
+<tr><td>Nombre</td><td>Verbo + objeto</td><td>"Registrar misi&oacute;n de reparto de documento"</td></tr>
+<tr><td>Actor</td><td>Rol (no persona)</td><td>"Operador de drones"</td></tr>
+<tr><td>Precondiciones</td><td>Qu&eacute; debe existir ANTES</td><td>"Debe existir al menos un drone disponible con bater&iacute;a &ge;30%"</td></tr>
+<tr><td>Tipo de campo</td><td>Tipo de dato real</td><td><code>String</code>, <code>Integer</code>, <code>Enum(SOBRE,CARPETA,LIBRO)</code></td></tr>
+<tr><td>Lista en salida</td><td>Especificar atributos</td><td><code>List&lt;Drone(id:String, bateria:int, ubicacion:String)&gt;</code></td></tr>
+</table>
+<div class="two">
+<div class="box"><h4>Precondici&oacute;n &#10003;</h4><p>Existe ANTES de ejecutar. Sin ella no puede iniciar.<br><em>"Debe haber al menos 1 drone disponible."</em></p></div>
+<div class="box"><h4>Regla de Negocio &#10003;</h4><p>Restricci&oacute;n del dominio que aplica DURANTE la ejecuci&oacute;n.<br><em>"Un drone no puede tener m&aacute;s de 1 misi&oacute;n activa simult&aacute;nea."</em></p></div>
+</div>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Completa la plantilla DOSW para el RF "SC-01 Registrar misi&oacute;n de reparto de documento". Incluye: c&oacute;digo, nombre, actor, precondiciones, datos de entrada con TIPOS REALES (drone asignado con sus atributos, origen, destino, tipo de carga), datos de salida (c&oacute;digo de misi&oacute;n generado), flujo b&aacute;sico de 5 pasos, flujo alterno (drone sin bater&iacute;a suficiente, destino inv&aacute;lido), y 2 reglas de negocio.</div>
+</div></div>
+
+<div class="tdiv">08 &middot; Manual de Identidad y UX/UI</div>
+<div class="card" id="ch-ux">
+<div class="ch-hd" onclick="toggle('ch-ux')">
+  <div class="ico">&#127912;</div><div class="cm">
+  <div class="ct">Definir la identidad de SkyCampus antes de dise&ntilde;ar una sola pantalla</div>
+  <div class="cs">Paleta &middot; Tipograf&iacute;a &middot; Nielsen aplicado &middot; Identidad primero, mock despu&eacute;s</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-ux')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<div class="nt warn"><strong>&#9888; El error m&aacute;s grave</strong>Ir a Figma o a la IA sin definir primero la identidad. Resultado: cada pantalla parece de una app diferente. PRIMERO identidad, LUEGO dise&ntilde;o.</div>
+<h3>Manual de identidad m&iacute;nimo de SkyCampus</h3>
+<table>
+<tr><th>Elemento</th><th>Orientaci&oacute;n para SkyCampus</th></tr>
+<tr><td>Color primario</td><td>Tecnol&oacute;gico, confiable, profesional. Piensa en una app de control de sistemas: azul oscuro, gris pizarra, morado t&eacute;cnico. T&uacute; decides, pero justif&iacute;calo.</td></tr>
+<tr><td>Colores de estado</td><td>Drone disponible (verde), en vuelo (azul), en carga (amarillo), fallo (rojo). Estos son cr&iacute;ticos.</td></tr>
+<tr><td>Tipograf&iacute;a</td><td>Una fuente para la interfaz (sans-serif, peso 400/600), monoespaciada para c&oacute;digos de misi&oacute;n e IDs de drones.</td></tr>
+<tr><td>Tono de voz</td><td>T&eacute;cnico pero claro. El operador es un profesional. Mensajes directos, sin ambig&uuml;edades.</td></tr>
+</table>
+<h3>Heur&iacute;sticas de Nielsen cr&iacute;ticas para el panel de drones</h3>
+<table>
+<tr><th>Heur&iacute;stica</th><th>Aplicaci&oacute;n en SkyCampus</th></tr>
+<tr><td>#1 Visibilidad del estado</td><td>El estado de cada drone (disponible/en vuelo/cargando/fallo) debe verse de un vistazo, sin clics.</td></tr>
+<tr><td>#3 Control del usuario</td><td>El operador puede cancelar una misi&oacute;n en estado PENDIENTE. Si no, pierde el control.</td></tr>
+<tr><td>#5 Prevenci&oacute;n de errores</td><td>Deshabilitar visualmente los drones con bater&iacute;a &lt;30%, no mostrar un error despu&eacute;s de asignarlos.</td></tr>
+<tr><td>#8 Dise&ntilde;o minimalista</td><td>El panel muestra solo lo que el operador necesita para decidir: ID, bater&iacute;a, estado, ubicaci&oacute;n.</td></tr>
+<tr><td>#9 Mensajes de error claros</td><td>"El drone D-04 tiene bater&iacute;a insuficiente (18%). M&iacute;nimo requerido: 30%." No: "Error de asignaci&oacute;n".</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>1. Define el manual de identidad b&aacute;sico de SkyCampus (paleta con c&oacute;digos hex, tipograf&iacute;a, colores de estado). 2. Genera con IA el mock del "Panel de monitoreo de la flota" usando la identidad definida &mdash; muestra los 5 drones con su estado actual. 3. Verifica que el mock cumple al menos 5 de los 10 principios de Nielsen. Escribe cu&aacute;les cumple y c&oacute;mo.</div>
+</div></div>
+
+<div class="tdiv">09 &middot; Agilismo y Jira</div>
+<div class="card" id="ch-agil">
+<div class="ch-hd" onclick="toggle('ch-agil')">
+  <div class="ico">&#127939;</div><div class="cm">
+  <div class="ct">Organizar el desarrollo del MVP en Jira correctamente</div>
+  <div class="cs">Ép&iacute;ca &rarr; Feature &rarr; HU correcta &rarr; Subtarea espec&iacute;fica</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-agil')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La jerarqu&iacute;a en SkyCampus</h3>
+<ol class="steps">
+<li><strong>Ép&iacute;ca:</strong> Objetivo estrat&eacute;gico que no cabe en un sprint.<br><em>"Digitalizar el reparto interno de la ECI mediante una flota de drones supervisada"</em></li>
+<li><strong>Feature:</strong> Funcionalidad concreta que aporta valor completo al usuario.<br><em>"Gesti&oacute;n de la flota de drones del campus"</em></li>
+<li><strong>Historia de Usuario:</strong> Siempre: <em>Como [rol], quiero [qu&eacute;], para [beneficio].</em><br><em>"Como operador, quiero ver qu&eacute; drones est&aacute;n disponibles y su nivel de bater&iacute;a para asignar la misi&oacute;n al drone m&aacute;s adecuado."</em></li>
+<li><strong>Subtarea:</strong> Acci&oacute;n t&eacute;cnica asignable a UNA persona.<br><em>"Implementar query que filtra drones disponibles con bater&iacute;a &ge;30% usando Stream"</em></li>
+</ol>
+<div class="nt warn"><strong>&#9888; Errores frecuentes en Jira</strong>HU sin "Como... quiero... para...". Subtareas con nombre vago: "codificar backend". Tickets que nunca se mueven del "To Do". Crear todo como "Story" sin jerarqu&iacute;a &eacute;pica ni feature.</div>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>En Jira: crea la &eacute;pica del MVP, la feature "Gesti&oacute;n de flota", y 3 HU con formato correcto (ver flota, asignar drone a misi&oacute;n, cancelar misi&oacute;n pendiente). Para la HU de "asignar drone", agrega 3 subtareas concretas y 2 criterios de aceptaci&oacute;n. Comparte captura.</div>
+</div></div>
+
+<div class="tdiv">10 &middot; Diagramas de Casos de Uso</div>
+<div class="card" id="ch-uc">
+<div class="ch-hd" onclick="toggle('ch-uc')">
+  <div class="ico">&#127919;</div><div class="cm">
+  <div class="ct">Diagrama de CU para el RF "Registrar misi&oacute;n de reparto"</div>
+  <div class="cs">Actor &middot; Sistema &middot; &lt;&lt;include&gt;&gt; obligatorio &middot; &lt;&lt;extend&gt;&gt; condicional</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-uc')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<table>
+<tr><th>Elemento</th><th>Regla</th><th>En SkyCampus MVP</th></tr>
+<tr><td>Actor</td><td>Rol externo al sistema</td><td>Operador, Solicitante, Admin</td></tr>
+<tr><td>Caso de uso</td><td>Elipse con verbo. Dentro del rect&aacute;ngulo del sistema.</td><td>"Registrar misi&oacute;n", "Ver flota", "Cancelar misi&oacute;n"</td></tr>
+<tr><td>&lt;&lt;include&gt;&gt;</td><td>SIEMPRE se ejecuta. Sin condici&oacute;n.</td><td>"Registrar misi&oacute;n" &lt;&lt;include&gt;&gt; "Validar disponibilidad del drone": sin validaci&oacute;n no hay misi&oacute;n.</td></tr>
+<tr><td>&lt;&lt;extend&gt;&gt;</td><td>Solo bajo una condici&oacute;n espec&iacute;fica.</td><td>"Registrar misi&oacute;n" &lt;&lt;extend&gt;&gt; "Enviar alerta de bater&iacute;a baja": solo si bater&iacute;a &lt; 40%.</td></tr>
+</table>
+<div class="nt warn"><strong>&#9888; La confusi&oacute;n m&aacute;s com&uacute;n</strong>include: siempre pasa. extend: pasa bajo una condici&oacute;n. Si puedes preguntarte "&iquest;puede el CU base funcionar sin esto?", la respuesta determina si es include (no) o extend (s&iacute;).</div>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Dibuja el diagrama de CU para el RF "SC-01 Registrar misi&oacute;n". Incluye los 3 actores del MVP, el sistema SkyCampus, todos los CU relevantes, al menos 1 &lt;&lt;include&gt;&gt; y 1 &lt;&lt;extend&gt;&gt; con la condici&oacute;n explicitada. S&uacute;belo al repo.</div>
+</div></div>
+
+<div class="tdiv">11 &middot; Mocks con IA</div>
+<div class="card" id="ch-mocks">
+<div class="ch-hd" onclick="toggle('ch-mocks')">
+  <div class="ico">&#128444;</div><div class="cm">
+  <div class="ct">Generar el mock del panel de operador con el proceso correcto</div>
+  <div class="cs">Referencias &rarr; Identidad &rarr; Datos del RF &rarr; Prompt completo</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-mocks')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<div class="nt warn"><strong>&#9888; El error m&aacute;s grave</strong>Abrir la IA y escribir "dise&ntilde;a un panel de control de drones". El resultado es gen&eacute;rico. El mock debe derivarse de la identidad que ya definiste y de los datos del RF espec&iacute;fico.</div>
+<h3>El proceso correcto en 4 pasos</h3>
+<ol class="steps">
+<li><strong>Referencias:</strong> Busca 2 paneles de control de sistemas reales (centros de despacho, dashboards de flota). Captura la pantalla de monitoreo espec&iacute;ficamente.</li>
+<li><strong>Estilo:</strong> Usa la paleta, fuente y colores de estado que definiste en el reto 09.</li>
+<li><strong>Datos del RF:</strong> Del RF SC-01, extrae: qu&eacute; datos de entrada necesita el operador (ver la flota) y qu&eacute; muestra la pantalla (ID, bater&iacute;a, estado, ubicaci&oacute;n de cada drone).</li>
+<li><strong>Prompt con contexto completo.</strong></li>
+</ol>
+<h3>Plantilla de prompt para SkyCampus</h3>
+<pre><span class="cmt">Actúa como diseñador UX/UI senior de sistemas de control.
+SISTEMA: SkyCampus &mdash; Panel de control de flota de drones ECI
+PANTALLA: Panel de monitoreo de la flota (vista principal del operador)
+ESTILO: [tu paleta]. Tipografía [tu fuente]. Fondo oscuro tipo dashboard técnico.
+ACTOR: Operador de drones &mdash; necesita tomar decisiones rápidas
+DATOS A MOSTRAR POR DRONE: ID (formato D-XX), batería en %, estado
+  (DISPONIBLE/EN_VUELO/EN_CARGA/FALLO), ubicación actual
+ACCIONES DEL OPERADOR: Seleccionar drone, Asignar a misión, Ver detalle
+ESTADOS DE LA PANTALLA:
+  1. Normal: flota con drones en distintos estados
+  2. Alerta: un drone en estado FALLO (destacado visualmente)
+  3. Vacío: todos los drones en misión simultáneamente
+Nielsen: visibilidad del estado (#1), minimalismo (#8), prevención errores (#5)</span></pre>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Genera los 3 estados del panel con IA. Las pantallas deben ser visualmente coherentes con tu identidad. Adjunta el prompt que usaste y anota qu&eacute; heur&iacute;sticas de Nielsen cumplen.</div>
+</div></div>
+
+<div class="tdiv">12 &middot; TDD</div>
+<div class="card" id="ch-tdd">
+<div class="ch-hd" onclick="toggle('ch-tdd')">
+  <div class="ico">&#129514;</div><div class="cm">
+  <div class="ct">TDD para el ValidadorMision de SkyCampus</div>
+  <div class="cs">Red &rarr; Green &rarr; Refactor &middot; JUnit 5 &middot; Patr&oacute;n AAA</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-tdd')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El ciclo &mdash; siempre en este orden</h3>
+<ol class="steps">
+<li><strong>Red:</strong> Escribe la prueba. El c&oacute;digo no existe a&uacute;n &mdash; la prueba falla. Esto es correcto y esperado.</li>
+<li><strong>Green:</strong> Escribe el c&oacute;digo m&iacute;nimo para que la prueba pase. Solo lo m&iacute;nimo.</li>
+<li><strong>Refactor:</strong> Mejora la estructura sin cambiar el comportamiento. Las pruebas garantizan que no rompiste nada.</li>
+</ol>
+<h3>Las pruebas primero &mdash; ValidadorMision</h3>
+<pre><span class="kw">class</span> <span class="ty">ValidadorMisionTest</span> {
+    <span class="kw">private</span> <span class="ty">ValidadorMision</span> v;
+
+    <span class="fn">@BeforeEach</span>
+    <span class="kw">void</span> <span class="fn">setUp</span>() { v = <span class="kw">new</span> <span class="ty">ValidadorMision</span>(); }
+
+    <span class="fn">@Test</span>
+    <span class="fn">@DisplayName</span>(<span class="st">"Drone con batería ≥ 30% puede ser asignado"</span>)
+    <span class="kw">void</span> <span class="fn">droneBateriaSuficiente_puedeAsignarse</span>() {
+        <span class="cmt">// ARRANGE</span>
+        <span class="ty">Drone</span> d = <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-01"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">85</span>, <span class="kw">true</span>, <span class="st">"Bloque A"</span>);
+        <span class="cmt">// ACT</span>
+        <span class="kw">boolean</span> resultado = v.<span class="fn">tieneBateriaSuficiente</span>(d);
+        <span class="cmt">// ASSERT</span>
+        assertTrue(resultado);
+    }
+
+    <span class="fn">@Test</span>
+    <span class="fn">@DisplayName</span>(<span class="st">"Drone con batería < 30% NO puede ser asignado"</span>)
+    <span class="kw">void</span> <span class="fn">droneBateriaCritica_noAsignable</span>() {
+        <span class="ty">Drone</span> d = <span class="kw">new</span> <span class="ty">Drone</span>(<span class="st">"D-04"</span>, <span class="st">"DJI Mini 3"</span>, <span class="nu">18</span>, <span class="kw">true</span>, <span class="st">"Bloque B"</span>);
+        assertFalse(v.<span class="fn">tieneBateriaSuficiente</span>(d));
+    }
+
+    <span class="fn">@Test</span>
+    <span class="fn">@DisplayName</span>(<span class="st">"Destino inválido lanza excepción"</span>)
+    <span class="kw">void</span> <span class="fn">destinoInvalido_lanzaExcepcion</span>() {
+        assertThrows(<span class="ty">DestinoInvalidoException</span>.<span class="kw">class</span>,
+            () -> v.<span class="fn">validarDestino</span>(<span class="st">"Edificio Inexistente"</span>));
+    }
+}</pre>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Aplica TDD para <code>ValidadorMision</code> con 3 m&eacute;todos: <code>tieneBateriaSuficiente(Drone)</code>, <code>validarDestino(String)</code>, <code>droneEstaDisponible(Drone)</code>. Escribe 3 pruebas por m&eacute;todo antes de implementar (9 pruebas en total, patr&oacute;n AAA). Luego implementa (Green). Luego limpia (Refactor).</div>
+</div></div>
+
+<div class="tdiv">13 &middot; JaCoCo — Cobertura de código</div>
+<div class="card" id="ch-sonar">
+<div class="ch-hd" onclick="toggle('ch-sonar')">
+  <div class="ico">&#128202;</div><div class="cm">
+  <div class="ct">Medir y limpiar el c&oacute;digo del MVP con JaCoCo y SonarQube</div>
+  <div class="cs">Cobertura &middot; Reporte HTML &middot; Bugs &middot; Code smells &middot; Deuda = 0</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-sonar')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>JaCoCo &mdash; &iquest;cu&aacute;nto de tu c&oacute;digo pruebas realmente?</h3>
+<p>JaCoCo marca cada l&iacute;nea en verde (ejecutada por pruebas) o rojo (nunca ejecutada). Una l&iacute;nea roja es c&oacute;digo que nadie ha verificado.</p>
+<pre><span class="cmt">&lt;!-- pom.xml: agregar en &lt;build&gt;&lt;plugins&gt; --&gt;</span>
+&lt;<span class="ty">plugin</span>&gt;
+  &lt;<span class="ty">groupId</span>&gt;org.jacoco&lt;/<span class="ty">groupId</span>&gt;
+  &lt;<span class="ty">artifactId</span>&gt;jacoco-maven-plugin&lt;/<span class="ty">artifactId</span>&gt;
+  &lt;<span class="ty">version</span>&gt;0.8.11&lt;/<span class="ty">version</span>&gt;
+  &lt;<span class="ty">executions</span>&gt;
+    &lt;<span class="ty">execution</span>&gt;&lt;<span class="ty">goals</span>&gt;&lt;<span class="ty">goal</span>&gt;prepare-agent&lt;/<span class="ty">goal</span>&gt;&lt;/<span class="ty">goals</span>&gt;&lt;/<span class="ty">execution</span>&gt;
+    &lt;<span class="ty">execution</span>&gt;&lt;<span class="ty">id</span>&gt;report&lt;/<span class="ty">id</span>&gt;&lt;<span class="ty">phase</span>&gt;test&lt;/<span class="ty">phase</span>&gt;
+      &lt;<span class="ty">goals</span>&gt;&lt;<span class="ty">goal</span>&gt;report&lt;/<span class="ty">goal</span>&gt;&lt;/<span class="ty">goals</span>&gt;&lt;/<span class="ty">execution</span>&gt;
+  &lt;/<span class="ty">executions</span>&gt;
+&lt;/<span class="ty">plugin</span>&gt;</pre>
+<pre><span class="cmt"># Generar reporte</span>
+mvn test jacoco:report
+<span class="cmt"># Abrir: target/site/jacoco/index.html</span></pre>
+<h3>SonarQube &mdash; los issues m&aacute;s comunes en el MVP</h3>
+<table>
+<tr><th>Issue</th><th>C&oacute;mo aparece en SkyCampus</th></tr>
+<tr><td>Bug</td><td>Usar <code>==</code> para comparar Strings de destino en vez de <code>.equals()</code></td></tr>
+<tr><td>Vulnerability</td><td>URL de BD hardcodeada en el c&oacute;digo fuente</td></tr>
+<tr><td>Code Smell</td><td>M&eacute;todo <code>calcularRuta</code> con 60+ l&iacute;neas y varios <code>if-else</code> anidados</td></tr>
+</table>
+<pre><span class="cmt"># Levantar SonarQube</span>
+docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
+<span class="cmt"># http://localhost:9000 &mdash; admin / admin</span>
+mvn sonar:sonar \
+  -Dsonar.projectKey=skycampus-eci \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=TU_TOKEN</pre>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Agrega JaCoCo al proyecto SkyCampus y llega a m&iacute;nimo 80% de line coverage con las pruebas del <code>ValidadorMision</code>. Luego analiza con SonarQube y corrige todos los issues: primero Bugs y Vulnerabilities, luego Code Smells. Deuda t&eacute;cnica final: 0.</div>
+</div></div>
+
+<div class="tdiv">14 &middot; SonarQube — Análisis estático de calidad</div>
+<div class="card" id="ch-sonarq">
+<div class="ch-hd" onclick="toggle('ch-sonarq')">
+  <div class="ico">🔍</div><div class="cm">
+  <div class="ct">Analizar la calidad del código con SonarQube</div>
+  <div class="cs">Code smells · Deuda técnica · Duplicaciones · Vulnerabilidades</div>
+  </div><button class="db undone" onclick="markDone(event,'ch-sonarq')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<h3>¿Qué mide SonarQube que JaCoCo no mide?</h3>
+<p>JaCoCo mide <strong>cuánto código está cubierto por pruebas</strong>. SonarQube mide <strong>qué tan bien está escrito ese código</strong>: duplicaciones, complejidad ciclomática, code smells, vulnerabilidades de seguridad y deuda técnica acumulada.</p>
+<div class="nt tip"><strong>&#127919; Reto Chimchar</strong>Conecta SonarQube a tu proyecto SkyCampus. Ejecuta el análisis y captura: (a) la calificación general, (b) el número de code smells, (c) la deuda técnica estimada. Corrige al menos 3 code smells y vuelve a ejecutar para mostrar la mejora.</div>
+</div></div>
+
+<div class="badge ch" id="badge-chimchar" style="display:none">
+<span class="bi">&#9889;</span><h3>&#161;Evolucionaste a Monferno!</h3>
+<p>El MVP funciona correctamente. Ahora la flota crece y se vuelve aut&oacute;noma.</p>
+</div>
+</div>
+
+<div class="ls level-monferno" id="level-monferno">
+<div class="lvb mo"><div class="lve">&#9889;</div><div>
+  <div class="lvn">Monferno &mdash; SkyCampus v2: flota aut&oacute;noma con prioridades</div>
+  <div class="lvd">El mismo sistema, m&aacute;s drones, m&aacute;s tipos, asignaci&oacute;n autom&aacute;tica, alertas en tiempo real.</div>
+</div></div>
+
+<div class="enu mo">
+  <div class="enu-h" onclick="toggleEnu(this)">
+    <span class="epill">ENUNCIADO MONFERNO</span>
+    <span class="etit">SkyCampus v2 &mdash; 20 drones, 3 tipos, asignaci&oacute;n autom&aacute;tica, alertas</span>
+    <span style="color:var(--mu)">&#8250;</span>
+  </div>
+  <div class="enu-b">
+    <p><strong>La ECI expandi&oacute; la flota.</strong> Ahora hay 20 drones de 3 tipos: <strong>Mini</strong> (hasta 500g, &aacute;gil), <strong>Cargo</strong> (hasta 2kg, lento) y <strong>Express</strong> (hasta 800g, r&aacute;pido, bater&iacute;a limitada). Los paquetes tienen peso en gramos, nivel de prioridad (URGENTE/NORMAL/BAJO) y en algunos casos restricciones espec&iacute;ficas.</p>
+    <p><strong>Novedades v2:</strong> El sistema asigna autom&aacute;ticamente el drone &oacute;ptimo seg&uacute;n el peso del paquete y la bater&iacute;a disponible. Cada vez que un drone cambia de estado (DISPONIBLE &rarr; EN_VUELO &rarr; ATERRIZANDO &rarr; DISPONIBLE), el sistema notifica autom&aacute;ticamente al operador y al sistema de log. Hay un nuevo actor: el <strong>T&eacute;cnico de mantenimiento</strong> que gestiona drones en estado FALLO.</p>
+    <p><strong>Nuevos tipos:</strong> <code>TipoDrone: Enum(MINI, CARGO, EXPRESS)</code>&nbsp;&nbsp;<code>Prioridad: Enum(URGENTE, NORMAL, BAJO)</code></p>
+    <div class="enota">&#128161; Cada reto de Monferno extiende el trabajo de Chimchar. El mismo c&oacute;digo, m&aacute;s funcionalidad.</div>
+  </div>
+</div>
+
+<div class="lkb" id="lock-monferno"><span class="lki">&#128274;</span><h3>Nivel bloqueado</h3><p>Completa todos los retos de Chimchar para desbloquear Monferno. Llevas <span id="lock-mo-count">0</span>/14.</p></div>
+<div id="monferno-content">
+<div class="lp mo">
+  <div class="lprow"><span class="lplb">Retos Monferno completados</span><span class="lpv" id="mo-stat">0 / 14</span></div>
+  <div class="lpt"><div class="lpf" id="mo-fill" style="width:0%"></div></div>
+</div>
+
+<div class="tdiv">01 &middot; Streams &amp; Lambdas</div>
+<div class="card" id="mo-streams">
+<div class="ch-hd" onclick="toggle('mo-streams')">
+  <div class="ico">&#9889;</div><div class="cm">
+  <div class="ct">Agrupar misiones por tipo de drone y obtener estad&iacute;sticas de flota</div>
+  <div class="cs">groupingBy &middot; partitioningBy &middot; flatMap &middot; counting &middot; summingInt</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-streams')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El nuevo contexto</h3>
+<p>Con 20 drones y misiones simult&aacute;neas, el dashboard del operador necesita estad&iacute;sticas agrupadas en tiempo real.</p>
+<pre><span class="kw">record</span> <span class="ty">Drone</span>(<span class="ty">String</span> id, <span class="ty">TipoDrone</span> tipo, <span class="kw">int</span> bateria,
+            <span class="kw">boolean</span> disponible, <span class="ty">EstadoDrone</span> estado) {}
+<span class="kw">record</span> <span class="ty">Mision</span>(<span class="ty">String</span> id, <span class="ty">Drone</span> drone, <span class="ty">String</span> destino,
+              <span class="kw">int</span> pesoPaqueteGramos, <span class="ty">Prioridad</span> prioridad,
+              <span class="ty">EstadoMision</span> estado) {}
+
+<span class="cmt">// groupingBy — misiones activas por tipo de drone</span>
+<span class="ty">Map</span>&lt;<span class="ty">TipoDrone</span>, <span class="ty">List</span>&lt;<span class="ty">Mision</span>&gt;&gt; porTipo = misiones.<span class="fn">stream</span>()
+    .<span class="fn">filter</span>(m -> m.estado() == <span class="ty">EstadoMision</span>.EN_VUELO)
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">groupingBy</span>(m -> m.drone().tipo()));
+
+<span class="cmt">// Contar misiones urgentes por tipo</span>
+<span class="ty">Map</span>&lt;<span class="ty">TipoDrone</span>, <span class="ty">Long</span>&gt; urgPorTipo = misiones.<span class="fn">stream</span>()
+    .<span class="fn">filter</span>(m -> m.prioridad() == <span class="ty">Prioridad</span>.URGENTE)
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">groupingBy</span>(m -> m.drone().tipo(), <span class="ty">Collectors</span>.<span class="fn">counting</span>()));
+
+<span class="cmt">// partitioningBy — drones operativos vs en fallo/mantenimiento</span>
+<span class="ty">Map</span>&lt;<span class="ty">Boolean</span>, <span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt;&gt; operatividad = flota.<span class="fn">stream</span>()
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">partitioningBy</span>(d -> d.estado() != <span class="ty">EstadoDrone</span>.FALLO));
+
+<span class="cmt">// Peso total de carga en vuelo ahora mismo</span>
+<span class="kw">int</span> pesoTotal = misiones.<span class="fn">stream</span>()
+    .<span class="fn">filter</span>(m -> m.estado() == <span class="ty">EstadoMision</span>.EN_VUELO)
+    .<span class="fn">mapToInt</span>(<span class="ty">Mision</span>::pesoPaqueteGramos)
+    .<span class="fn">sum</span>();</pre>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Dado <code>List&lt;Mision&gt;</code> del d&iacute;a: 1) Mapa tipo de drone &rarr; n&uacute;mero de misiones completadas hoy. 2) Drone con m&aacute;s misiones completadas (usa <code>groupingBy</code> + <code>counting</code> + max). 3) Porcentaje de misiones fallidas sobre el total. 4) &iquest;Existe alguna misi&oacute;n URGENTE en estado PENDIENTE hace m&aacute;s de 10 minutos? Todo con Streams.</div>
+</div></div>
+
+<div class="tdiv">02 &middot; GitHub y GitFlow</div>
+<div class="card" id="mo-git">
+<div class="ch-hd" onclick="toggle('mo-git')">
+  <div class="ico">&#127807;</div><div class="cm">
+  <div class="ct">Conflictos de merge en el equipo de SkyCampus v2</div>
+  <div class="cs">stash &middot; rebase &middot; log --graph &middot; resolver conflictos &middot; tags</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-git')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El escenario realista</h3>
+<p>Juan implement&oacute; la asignaci&oacute;n autom&aacute;tica en <code>AsignadorMision.java</code>. Mar&iacute;a implement&oacute; las alertas en el mismo archivo. Al intentar mergear ambas features a develop, hay conflicto.</p>
+<pre><span class="cmt"># Guardar trabajo sin terminar antes de cambiar de contexto</span>
+git stash
+git checkout develop  <span class="cmt"># atender algo urgente</span>
+git stash pop         <span class="cmt"># recuperar trabajo donde lo dejaste</span>
+
+<span class="cmt"># Ver el historial gráfico del equipo</span>
+git log --oneline --graph --all --decorate
+
+<span class="cmt"># Al resolver el conflicto en AsignadorMision.java:</span>
+<span class="cmt"># 1. El archivo muestra marcas &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD y &gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+<span class="cmt"># 2. Conservar AMBOS cambios (asignación de Juan + alertas de María)</span>
+<span class="cmt"># 3. Borrar las marcas de conflicto</span>
+git add src/service/AsignadorMision.java
+git commit -m <span class="st">"merge: integra asignación automática y sistema de alertas"</span>
+
+<span class="cmt"># Etiquetar el lanzamiento de la v2</span>
+git tag -a v2.0.0 -m <span class="st">"SkyCampus v2: flota autónoma, 3 tipos de drone, alertas"</span>
+git push origin v2.0.0</pre>
+<div class="two">
+<div class="box"><h4>merge &mdash; para ramas compartidas</h4><p>Crea un commit de merge. Preserva la historia. Usa cuando la rama ya fue pusheada al repositorio compartido.</p></div>
+<div class="box"><h4>rebase &mdash; solo local</h4><p>Historia lineal y limpia. Solo en ramas locales que AUN no empujaste. Nunca en ramas que otros ya descargaron.</p></div>
+</div>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Simula el escenario: dos ramas desde el mismo commit de develop, ambas modifican <code>AsignadorMision.java</code> en partes diferentes. Merge a develop. Resuelve el conflicto conservando ambos cambios. Comparte <code>git log --graph</code> mostrando las dos ramas convergiendo.</div>
+</div></div>
+
+<div class="tdiv">03 &middot; Patrones de Dise&ntilde;o</div>
+<div class="card" id="mo-patrones">
+<div class="ch-hd" onclick="toggle('mo-patrones')">
+  <div class="ico">&#129513;</div><div class="cm">
+  <div class="ct">Strategy para asignaci&oacute;n y Observer para alertas de estado</div>
+  <div class="cs">Strategy &middot; Observer &middot; Factory Method &middot; Patrones combinados</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-patrones')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Los nuevos problemas de la v2</h3>
+<p><strong>Problema 1 (Strategy):</strong> El sistema debe asignar el drone &oacute;ptimo para cada misi&oacute;n. Hoy asigna el de mayor bater&iacute;a. Ma&ntilde;ana podr&iacute;a ser el m&aacute;s cercano. La semana siguiente, el de menor uso acumulado. El algoritmo debe ser intercambiable sin tocar <code>GestorMisiones</code>.</p>
+<p><strong>Problema 2 (Observer):</strong> Cada vez que un drone cambia de estado, deben notificarse: el <code>PanelOperador</code>, el <code>SistemaLog</code>, y si el drone entra en FALLO, tambi&eacute;n el <code>AlertaTecnico</code>. A&ntilde;adir un nuevo observador no debe requerir tocar la clase <code>Drone</code>.</p>
+<pre><span class="cmt">// STRATEGY &mdash; algoritmos de asignación intercambiables</span>
+<span class="kw">interface</span> <span class="ty">EstrategiaAsignacion</span> {
+    <span class="ty">Optional</span>&lt;<span class="ty">Drone</span>&gt; <span class="fn">seleccionar</span>(<span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt; flota, <span class="ty">Mision</span> mision);
+}
+<span class="kw">class</span> <span class="ty">AsignacionMayorBateria</span> <span class="kw">implements</span> <span class="ty">EstrategiaAsignacion</span> {
+    <span class="kw">public</span> <span class="ty">Optional</span>&lt;<span class="ty">Drone</span>&gt; <span class="fn">seleccionar</span>(<span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt; flota, <span class="ty">Mision</span> m) {
+        <span class="kw">return</span> flota.<span class="fn">stream</span>()
+            .<span class="fn">filter</span>(<span class="ty">Drone</span>::disponible)
+            .<span class="fn">filter</span>(d -> d.capacidadGramos() &gt;= m.pesoPaqueteGramos())
+            .<span class="fn">max</span>(<span class="ty">Comparator</span>.<span class="fn">comparingInt</span>(<span class="ty">Drone</span>::bateria));
+    }
+}
+<span class="cmt">// Nueva estrategia: agregar clase, cero cambios a GestorMisiones (OCP)</span>
+
+<span class="cmt">// OBSERVER &mdash; notificaciones automáticas de cambio de estado</span>
+<span class="kw">interface</span> <span class="ty">ObservadorDrone</span> {
+    <span class="kw">void</span> <span class="fn">onEstadoCambiado</span>(<span class="ty">Drone</span> drone, <span class="ty">EstadoDrone</span> nuevo);
+}
+<span class="kw">class</span> <span class="ty">GestorFlota</span> {
+    <span class="kw">private final</span> <span class="ty">List</span>&lt;<span class="ty">ObservadorDrone</span>&gt; obs = <span class="kw">new</span> <span class="ty">ArrayList</span>&lt;&gt;();
+    <span class="kw">void</span> <span class="fn">suscribir</span>(<span class="ty">ObservadorDrone</span> o) { obs.<span class="fn">add</span>(o); }
+    <span class="kw">void</span> <span class="fn">cambiarEstado</span>(<span class="ty">Drone</span> d, <span class="ty">EstadoDrone</span> nuevo) {
+        <span class="cmt">// actualiza el estado...</span>
+        obs.<span class="fn">forEach</span>(o -> o.<span class="fn">onEstadoCambiado</span>(d, nuevo));
+    }
+}</pre>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Implementa en SkyCampus v2: 1) <code>EstrategiaAsignacion</code> con 3 implementaciones (mayor bater&iacute;a, menor uso acumulado, tipo de drone compatible con la carga). 2) Observer con 3 suscriptores: <code>PanelOperador</code>, <code>SistemaLog</code>, <code>AlertaTecnico</code>. 3) Demuestra con una prueba que a&ntilde;adir un 4to observador no requiere modificar <code>GestorFlota</code>.</div>
+</div></div>
+
+<div class="tdiv">04 &middot; Principios SOLID</div>
+<div class="card" id="mo-solid">
+<div class="ch-hd" onclick="toggle('mo-solid')">
+  <div class="ico">&#129395;</div><div class="cm">
+  <div class="ct">Los patrones de v2 implementan SOLID &mdash; demuéstralo con pruebas</div>
+  <div class="cs">Strategy &rarr; OCP &middot; Observer &rarr; DIP &middot; Servicios peque&ntilde;os &rarr; SRP</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-solid')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<table>
+<tr><th>Patr&oacute;n en v2</th><th>Principio SOLID</th><th>Por qu&eacute;</th></tr>
+<tr><td>Strategy (EstrategiaAsignacion)</td><td>OCP</td><td>Nueva estrategia = nueva clase. GestorMisiones no cambia.</td></tr>
+<tr><td>Observer (ObservadorDrone)</td><td>DIP</td><td>GestorFlota depende de la interfaz, no de PanelOperador concreto.</td></tr>
+<tr><td>Separaci&oacute;n en servicios</td><td>SRP</td><td>AsignadorMision solo asigna. SistemaLog solo registra.</td></tr>
+<tr><td>Chain of Responsibility (validadores)</td><td>OCP + SRP</td><td>Nuevo validador = nueva clase. Cada validador tiene una sola regla.</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Toma el <code>GestorDrone</code> del MVP que violaba SRP, OCP y DIP. Compara con la arquitectura v2. Para cada principio: (a) c&oacute;mo estaba violado antes, (b) c&oacute;mo el redise&ntilde;o lo corrige. Escribe una prueba que demuestre que <code>GestorMisiones</code> funciona con cualquier implementaci&oacute;n de <code>EstrategiaAsignacion</code> sin cambiar su c&oacute;digo.</div>
+</div></div>
+
+<div class="tdiv">05 &middot; Diagrama de Contexto</div>
+<div class="card" id="mo-contexto">
+<div class="ch-hd" onclick="toggle('mo-contexto')">
+  <div class="ico">&#128506;</div><div class="cm">
+  <div class="ct">SkyCampus v2 conecta con sistemas externos reales por primera vez</div>
+  <div class="cs">Sistema meteorol&oacute;gico &middot; Control a&eacute;reo &middot; Sistema de alertas</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-contexto')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La diferencia con el MVP</h3>
+<p>En el MVP no hab&iacute;a sistemas externos. En la v2, el sistema necesita consultar el clima (no se vuela con viento fuerte), reportar al control a&eacute;reo local, y enviar alertas cuando un drone falla.</p>
+<pre><span class="cmt">Actores v2: Operador, Solicitante, Admin, Técnico de mantenimiento (nuevo)
+
+Sistemas externos nuevos en v2:
+  - API Meteorológica     &larr;&mdash; Condiciones de viento/lluvia antes de lanzar
+  - Control Aéreo ECI    &larr;&rarr; Registro de vuelo / Autorización de ruta
+  - Sistema de Alertas   &larr;&mdash; Notificación cuando drone entra en estado FALLO</span></pre>
+<div class="nt info"><strong>Regla clave del diagrama</strong>En cada flecha entre el sistema y un sistema externo, escribe QU&Eacute; datos fluyen y en QU&Eacute; direcci&oacute;n. Una flecha sin etiqueta no informa nada al lector.</div>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Actualiza el diagrama de contexto del MVP para reflejar la v2: agrega el nuevo actor y los 3 sistemas externos con sus flujos etiquetados. Compara las dos versiones en el mismo documento. ¿Qu&eacute; creci&oacute;? ¿Qu&eacute; se mantuvo?</div>
+</div></div>
+
+<div class="tdiv">06 &middot; RF y RNF</div>
+<div class="card" id="mo-rf">
+<div class="ch-hd" onclick="toggle('mo-rf')">
+  <div class="ico">&#128203;</div><div class="cm">
+  <div class="ct">RF y RNF de la v2 &mdash; medibles, sin ambig&uuml;edades</div>
+  <div class="cs">RNF con m&eacute;trica &middot; Detectar contradicciones &middot; MoSCoW justificado</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-rf')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<div class="nt warn"><strong>&#9888; RNF ambiguo &mdash; no sirve</strong>"El sistema debe ser r&aacute;pido para asignar drones" &mdash; &iquest;r&aacute;pido c&oacute;mo? &iquest;bajo qu&eacute; condiciones?</div>
+<div class="nt tip" style="margin-top:.3rem"><strong>&#10003; RNF correcto para SkyCampus v2</strong>"El algoritmo de asignaci&oacute;n autom&aacute;tica debe seleccionar el drone &oacute;ptimo en menos de 500ms para una flota de hasta 50 drones, medido con JUnit 5 y <code>assertTimeout</code>."</div>
+<h3>Una tensi&oacute;n real de la v2 que debes detectar</h3>
+<div class="two">
+<div class="box"><h4>RF-07</h4><p>El sistema asigna autom&aacute;ticamente el drone de mayor bater&iacute;a disponible para cualquier misi&oacute;n.</p></div>
+<div class="box"><h4>RF-08</h4><p>Las misiones URGENTES tienen prioridad absoluta: deben recibir el drone m&aacute;s r&aacute;pido disponible, independientemente de la bater&iacute;a.</p></div>
+</div>
+<p style="font-size:.84rem;color:var(--mu);margin-top:.5rem">Estos dos RF no son contradictorios pero s&iacute; tienen tensi&oacute;n: "mayor bater&iacute;a" vs "m&aacute;s r&aacute;pido". Debes detectarlo y documentarlo expl&iacute;citamente para que el desarrollador sepa c&oacute;mo priorizar.</p>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Para la v2 escribe: 4 RF de las nuevas funcionalidades (asignaci&oacute;n autom&aacute;tica, alertas de fallo, consulta meteorol&oacute;gica, gesti&oacute;n por t&eacute;cnico) y 4 RNF con m&eacute;trica concreta. Aplica MoSCoW. Detecta la tensi&oacute;n entre RF-07 y RF-08 y documenta c&oacute;mo resolverla.</div>
+</div></div>
+
+<div class="tdiv">07 &middot; Plantilla DOSW</div>
+<div class="card" id="mo-plantilla">
+<div class="ch-hd" onclick="toggle('mo-plantilla')">
+  <div class="ico">&#128196;</div><div class="cm">
+  <div class="ct">RF "Asignar autom&aacute;ticamente drone a misi&oacute;n" &mdash; sub-objetos correctos</div>
+  <div class="cs">Sub-&iacute;ndices &middot; Tipos anidados &middot; Flujos alternos m&uacute;ltiples</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-plantilla')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>C&oacute;mo desglosar sub-&iacute;ndices correctamente</h3>
+<p>La misi&oacute;n tiene datos anidados (el paquete, el drone asignado). Cada atributo de cada sub-objeto va en su propia fila:</p>
+<table>
+<tr><th>Nombre</th><th>Tipo de campo</th><th>Reglas</th><th>Oblig.</th></tr>
+<tr><td>paquete</td><td>&mdash;</td><td>&mdash;</td><td>S&iacute;</td></tr>
+<tr><td>paquete.peso</td><td><code>Integer</code></td><td>Entre 1 y 2000 gramos</td><td>S&iacute;</td></tr>
+<tr><td>paquete.tipo</td><td><code>Enum(SOBRE,CARPETA,LIBRO,EQUIPO)</code></td><td>&mdash;</td><td>S&iacute;</td></tr>
+<tr><td>paquete.prioridad</td><td><code>Enum(URGENTE,NORMAL,BAJO)</code></td><td>&mdash;</td><td>S&iacute;</td></tr>
+<tr><td>destino</td><td><code>Enum(BLOQUE_A,BLOQUE_B,BLOQUE_C,BLOQUE_D,BIBLIOTECA)</code></td><td>&mdash;</td><td>S&iacute;</td></tr>
+<tr><td>droneAsignado</td><td>&mdash;</td><td>Calculado por el sistema seg&uacute;n la estrategia activa</td><td>No (salida)</td></tr>
+<tr><td>droneAsignado.id</td><td><code>String</code></td><td>Formato D-XX</td><td>No (salida)</td></tr>
+<tr><td>droneAsignado.bateria</td><td><code>Integer</code></td><td>&mdash;</td><td>No (salida)</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Completa la plantilla DOSW para el RF "SC-07 Asignar autom&aacute;ticamente drone a misi&oacute;n". Flujo b&aacute;sico: recibir solicitud &rarr; consultar clima &rarr; filtrar drones aptos &rarr; aplicar estrategia de selecci&oacute;n &rarr; validar (bater&iacute;a, capacidad, disponibilidad) &rarr; asignar &rarr; notificar observadores. Flujos alternos: sin drones disponibles, condiciones clim&aacute;ticas adversas, paquete supera capacidad m&aacute;xima. Reglas de negocio: m&iacute;n. 30% bater&iacute;a, el drone CARGO no puede usarse para paquetes &lt;100g.</div>
+</div></div>
+
+<div class="tdiv">08 &middot; Identidad y UX</div>
+<div class="card" id="mo-ux">
+<div class="ch-hd" onclick="toggle('mo-ux')">
+  <div class="ico">&#127912;</div><div class="cm">
+  <div class="ct">Sistema de dise&ntilde;o de SkyCampus v2 y Leyes UX aplicadas</div>
+  <div class="cs">Componentes con estados &middot; Ley de Fitts &middot; Ley de Hick &middot; Miller</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-ux')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Del manual b&aacute;sico al sistema de dise&ntilde;o</h3>
+<p>En Chimchar definiste los valores (colores, fuentes). En Monferno los conviertes en componentes reutilizables con todos sus estados.</p>
+<table>
+<tr><th>Componente</th><th>Estados a dise&ntilde;ar</th></tr>
+<tr><td>Tarjeta de drone</td><td>Disponible (verde), En vuelo (azul), En carga (amarillo), Fallo (rojo), Mantenimiento (gris)</td></tr>
+<tr><td>Bot&oacute;n "Asignar misi&oacute;n"</td><td>Default, hover, procesando (spinner), &eacute;xito, deshabilitado</td></tr>
+<tr><td>Indicador de bater&iacute;a</td><td>&ge;60% (verde), 30-59% (amarillo), &lt;30% (rojo, con advertencia)</td></tr>
+</table>
+<h3>Leyes UX aplicadas al panel de SkyCampus v2</h3>
+<table>
+<tr><th>Ley</th><th>Aplicaci&oacute;n concreta</th></tr>
+<tr><td>Ley de Fitts</td><td>El bot&oacute;n de acci&oacute;n de emergencia (cancelar misi&oacute;n en vuelo) debe ser grande y accesible. No enterrado en un men&uacute;.</td></tr>
+<tr><td>Ley de Hick</td><td>Si hay 20 drones, no mostrarlos todos en una lista plana. Agrupar por estado o tipo. El operador elige m&aacute;s r&aacute;pido.</td></tr>
+<tr><td>N&uacute;mero de Miller</td><td>El panel de alertas no debe acumular m&aacute;s de 7 notificaciones sin que el operador las confirme.</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Dise&ntilde;a el componente "Tarjeta de drone" con sus 5 estados. Genera el flujo completo de asignaci&oacute;n autom&aacute;tica (3 pantallas: panel de flota &rarr; detalle de misi&oacute;n &rarr; confirmaci&oacute;n). Documenta c&oacute;mo aplicaste Fitts y Hick.</div>
+</div></div>
+
+<div class="tdiv">09 &middot; Agilismo</div>
+<div class="card" id="mo-agil">
+<div class="ch-hd" onclick="toggle('mo-agil')">
+  <div class="ico">&#127939;</div><div class="cm">
+  <div class="ct">Sprint 1 de SkyCampus v2 con criterios de aceptaci&oacute;n Gherkin</div>
+  <div class="cs">Story points &middot; Velocity &middot; Gherkin &middot; Definition of Done</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-agil')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Criterios de aceptaci&oacute;n en formato Gherkin</h3>
+<pre><span class="ok2">DADO QUE</span> hay 3 drones disponibles con bater&iacute;a &ge;30%
+  <span class="ok2">Y</span> la solicitud es de tipo URGENTE con un paquete de 300g
+<span class="ok2">CUANDO</span> el sistema ejecuta la asignaci&oacute;n autom&aacute;tica
+<span class="ok2">ENTONCES</span> selecciona el drone de tipo EXPRESS con mayor bater&iacute;a
+  <span class="ok2">Y</span> cambia el estado del drone a EN_VUELO
+  <span class="ok2">Y</span> notifica al PanelOperador y al SistemaLog en menos de 500ms</pre>
+<h3>Definition of Done del equipo SkyCampus v2</h3>
+<ul>
+<li>C&oacute;digo revisado en PR por al menos otro miembro</li>
+<li>Pruebas unitarias con cobertura JaCoCo &ge;80%</li>
+<li>SonarQube: 0 bugs, 0 vulnerabilidades</li>
+<li>Todos los criterios Gherkin de la HU pasan</li>
+<li>Mergeado a develop con flujo GitFlow correcto</li>
+<li>Diagrama de contexto y plantilla DOSW actualizados si el RF cambi&oacute;</li>
+</ul>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Planifica el Sprint 1 de SkyCampus v2 en Jira: selecciona 5 HU de las nuevas funcionalidades, est&iacute;malas en Fibonacci (1,2,3,5,8), planifica cu&aacute;les caben con velocidad de 20 points. Para cada HU escribe 2 criterios de aceptaci&oacute;n en formato Gherkin. Define el DoD del equipo.</div>
+</div></div>
+
+<div class="tdiv">10 &middot; Casos de Uso</div>
+<div class="card" id="mo-uc">
+<div class="ch-hd" onclick="toggle('mo-uc')">
+  <div class="ico">&#127919;</div><div class="cm">
+  <div class="ct">CU del m&oacute;dulo de misiones v2 con herencia de actores</div>
+  <div class="cs">Herencia &middot; include correcto &middot; extend condicional &middot; 4 actores</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-uc')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Herencia de actores en SkyCampus v2</h3>
+<p><strong>T&eacute;cnico de mantenimiento</strong> extiende de <strong>Operador</strong>: hereda la capacidad de ver la flota m&aacute;s los CU exclusivos de mantenimiento (diagnosticar fallo, marcar drone como reparado). No se repiten los CU heredados.</p>
+<div class="two">
+<div class="box"><h4>&lt;&lt;include&gt;&gt;</h4><p>"Asignar drone" &lt;&lt;include&gt;&gt; "Validar condiciones clim&aacute;ticas": no se puede volar sin verificar el clima. Siempre.</p></div>
+<div class="box"><h4>&lt;&lt;extend&gt;&gt;</h4><p>"Asignar drone" &lt;&lt;extend&gt;&gt; "Alertar t&eacute;cnico": solo cuando el drone seleccionado tiene bater&iacute;a entre 30-40%.</p></div>
+</div>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Dibuja el diagrama de CU del m&oacute;dulo de misiones v2: 4 actores (Operador, Solicitante, T&eacute;cnico con herencia, Admin), todos los CU del m&oacute;dulo, al menos 2 include y 2 extend con la condici&oacute;n de cada extend explicitada.</div>
+</div></div>
+
+<div class="tdiv">11 &middot; Mocks</div>
+<div class="card" id="mo-mocks">
+<div class="ch-hd" onclick="toggle('mo-mocks')">
+  <div class="ico">&#128444;</div><div class="cm">
+  <div class="ct">Flujo completo de asignaci&oacute;n autom&aacute;tica &mdash; 3 pantallas con todos los estados</div>
+  <div class="cs">Flujo de navegaci&oacute;n &middot; Estados de error &middot; Nielsen verificado</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-mocks')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Las pantallas del flujo</h3>
+<ol class="steps">
+<li><strong>Panel de flota:</strong> Vista general de los 20 drones agrupados por estado. El operador selecciona "Nueva misi&oacute;n".</li>
+<li><strong>Formulario de misi&oacute;n:</strong> Origen, destino, peso y tipo del paquete, prioridad. El sistema muestra en tiempo real qu&eacute; drones son aptos.</li>
+<li><strong>Confirmaci&oacute;n:</strong> Drone seleccionado por el algoritmo, ruta estimada, ETA. Botones: Confirmar / Cancelar.</li>
+</ol>
+<h3>Estados de error que deben dise&ntilde;arse</h3>
+<ul>
+<li>Sin drones disponibles: mensaje claro + opci&oacute;n de programar para m&aacute;s tarde</li>
+<li>Condiciones clim&aacute;ticas adversas: bloquear el flujo con explicaci&oacute;n (Nielsen #9)</li>
+<li>Paquete muy pesado: mensaje con el peso m&aacute;ximo disponible de la flota actual</li>
+</ul>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Genera el flujo de 3 pantallas con IA usando la identidad de SkyCampus. Incluye los 3 estados de error. Verifica que el dise&ntilde;o respeta 7+ principios de Nielsen. Documenta cu&aacute;les cumple y c&oacute;mo.</div>
+</div></div>
+
+<div class="tdiv">12 &middot; TDD</div>
+<div class="card" id="mo-tdd">
+<div class="ch-hd" onclick="toggle('mo-tdd')">
+  <div class="ico">&#129514;</div><div class="cm">
+  <div class="ct">TDD para AsignadorMision con Mockito &mdash; simular la API del clima</div>
+  <div class="cs">@Mock &middot; @InjectMocks &middot; verify &middot; Casos l&iacute;mite</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-tdd')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<p>La API meteorol&oacute;gica es un sistema externo. No puedes probar con el clima real. <strong>Mockito simula la respuesta</strong> para que las pruebas sean r&aacute;pidas y predecibles.</p>
+<pre><span class="fn">@ExtendWith</span>(<span class="ty">MockitoExtension</span>.<span class="kw">class</span>)
+<span class="kw">class</span> <span class="ty">AsignadorMisionTest</span> {
+    <span class="fn">@Mock</span>
+    <span class="ty">ApiMeteorologica</span> clima;         <span class="cmt">// simulado</span>
+    <span class="fn">@Mock</span>
+    <span class="ty">ObservadorDrone</span>  notificador;  <span class="cmt">// simulado</span>
+    <span class="fn">@InjectMocks</span>
+    <span class="ty">AsignadorMision</span>  asignador;
+
+    <span class="fn">@Test</span>
+    <span class="fn">@DisplayName</span>(<span class="st">"Drone de mayor batería se asigna a misión NORMAL"</span>)
+    <span class="kw">void</span> <span class="fn">misionNormal_asignaDroneMayorBateria</span>() {
+        <span class="cmt">// ARRANGE</span>
+        <span class="ty">Mockito</span>.<span class="fn">when</span>(clima.<span class="fn">esApto</span>()).<span class="fn">thenReturn</span>(<span class="kw">true</span>);
+        <span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt; flota = crearFlotaTest();
+        <span class="ty">Mision</span> m = crearMisionTest(<span class="ty">Prioridad</span>.NORMAL, <span class="nu">200</span>);
+        <span class="cmt">// ACT</span>
+        <span class="ty">Optional</span>&lt;<span class="ty">Drone</span>&gt; asignado = asignador.<span class="fn">asignar</span>(flota, m);
+        <span class="cmt">// ASSERT</span>
+        assertTrue(asignado.<span class="fn">isPresent</span>());
+        assertEquals(<span class="nu">91</span>, asignado.<span class="fn">get</span>().<span class="fn">bateria</span>());
+        <span class="ty">Mockito</span>.<span class="fn">verify</span>(notificador).<span class="fn">onEstadoCambiado</span>(<span class="ty">Mockito</span>.<span class="fn">any</span>(), <span class="ty">Mockito</span>.<span class="fn">any</span>());
+    }
+
+    <span class="fn">@Test</span>
+    <span class="kw">void</span> <span class="fn">climaAdverso_retornaVacio</span>() {
+        <span class="ty">Mockito</span>.<span class="fn">when</span>(clima.<span class="fn">esApto</span>()).<span class="fn">thenReturn</span>(<span class="kw">false</span>);
+        <span class="ty">Optional</span>&lt;<span class="ty">Drone</span>&gt; resultado = asignador.<span class="fn">asignar</span>(flota, mision);
+        assertTrue(resultado.<span class="fn">isEmpty</span>());
+    }
+}</pre>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Aplica TDD para <code>AsignadorMision</code>: primero 5 pruebas (asignaci&oacute;n exitosa, clima adverso, sin drones aptos, paquete muy pesado, misi&oacute;n urgente debe el drone EXPRESS). Usa Mockito para <code>ApiMeteorologica</code>. Luego implementa. Luego refactoriza.</div>
+</div></div>
+
+<div class="tdiv">13 &middot; JaCoCo — Cobertura de código</div>
+<div class="card" id="mo-sonar">
+<div class="ch-hd" onclick="toggle('mo-sonar')">
+  <div class="ico">&#128202;</div><div class="cm">
+  <div class="ct">Quality Gate configurado &mdash; la v2 no llega a producci&oacute;n si falla</div>
+  <div class="cs">Umbral de cobertura &middot; Branch coverage &middot; Deuda t&eacute;cnica &lt; 30min</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-sonar')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<pre><span class="cmt">&lt;!-- pom.xml: el build falla si cobertura baja del 80% --&gt;</span>
+&lt;<span class="ty">execution</span>&gt;&lt;<span class="ty">id</span>&gt;check&lt;/<span class="ty">id</span>&gt;&lt;<span class="ty">goals</span>&gt;&lt;<span class="ty">goal</span>&gt;check&lt;/<span class="ty">goal</span>&gt;&lt;/<span class="ty">goals</span>&gt;
+  &lt;<span class="ty">configuration</span>&gt;&lt;<span class="ty">rules</span>&gt;&lt;<span class="ty">rule</span>&gt;&lt;<span class="ty">limits</span>&gt;
+    &lt;<span class="ty">limit</span>&gt;&lt;<span class="ty">counter</span>&gt;LINE&lt;/<span class="ty">counter</span>&gt;&lt;<span class="ty">value</span>&gt;COVEREDRATIO&lt;/<span class="ty">value</span>&gt;
+      &lt;<span class="ty">minimum</span>&gt;0.80&lt;/<span class="ty">minimum</span>&gt;&lt;/<span class="ty">limit</span>&gt;
+    &lt;<span class="ty">limit</span>&gt;&lt;<span class="ty">counter</span>&gt;BRANCH&lt;/<span class="ty">counter</span>&gt;&lt;<span class="ty">value</span>&gt;COVEREDRATIO&lt;/<span class="ty">value</span>&gt;
+      &lt;<span class="ty">minimum</span>&gt;0.70&lt;/<span class="ty">minimum</span>&gt;&lt;/<span class="ty">limit</span>&gt;
+  &lt;/<span class="ty">limits</span>&gt;&lt;/<span class="ty">rule</span>&gt;&lt;/<span class="ty">rules</span>&gt;&lt;/<span class="ty">configuration</span>&gt;
+&lt;/<span class="ty">execution</span>&gt;</pre>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Configura el Quality Gate con 80% line y 70% branch. Analiza SkyCampus v2 con SonarQube: 0 bugs, 0 vulnerabilidades, deuda t&eacute;cnica &lt;30min. Captura el dashboard antes y despu&eacute;s de las correcciones.</div>
+</div></div>
+
+<div class="tdiv">14 &middot; SonarQube — Análisis estático de calidad</div>
+<div class="card" id="mo-sonarq">
+<div class="ch-hd" onclick="toggle('mo-sonarq')">
+  <div class="ico">🔍</div><div class="cm">
+  <div class="ct">Analizar la calidad del código con SonarQube</div>
+  <div class="cs">Code smells · Deuda técnica · Duplicaciones · Vulnerabilidades</div>
+  </div><button class="db undone" onclick="markDone(event,'mo-sonarq')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<p>Igual que en Chimchar, pero ahora tu cobertura objetivo es ≥85% y debes mostrar que los code smells del nivel de Monferno (mayor complejidad con Strategy y Observer) también quedan en 0.</p>
+<div class="nt tip"><strong>&#127919; Reto Monferno</strong>Ejecuta SonarQube con la v2 completa. Muestra el Quality Gate en verde. Captura el panel con 0 bugs, 0 vulnerabilidades y deuda técnica ≤30 min.</div>
+</div></div>
+
+<div class="badge mo" id="badge-monferno" style="display:none">
+<span class="bi">&#128081;</span><h3>&#161;Evolucionaste a Infernape!</h3>
+<p>La flota aut&oacute;noma funciona. Ahora SkyCampus conecta varias sedes universitarias.</p>
+</div>
+</div></div>
+
+<div class="ls level-infernape" id="level-infernape">
+<div class="lvb inf"><div class="lve">&#128081;</div><div>
+  <div class="lvn">Infernape &mdash; SkyCampus Enterprise: red multi-sede</div>
+  <div class="lvd">El mismo sistema conecta 4 universidades. Optimizaci&oacute;n de rutas, gesti&oacute;n de flota compartida, analytics de entregas.</div>
+</div></div>
+
+<div class="enu inf">
+  <div class="enu-h" onclick="toggleEnu(this)">
+    <span class="epill">ENUNCIADO INFERNAPE</span>
+    <span class="etit">SkyCampus Enterprise &mdash; Red de drones entre 4 sedes universitarias</span>
+    <span style="color:var(--mu)">&#8250;</span>
+  </div>
+  <div class="enu-b">
+    <p><strong>El &eacute;xito en la ECI</strong> llev&oacute; a que UNAL, Uniandes y EAFIT quisieran usar SkyCampus. Ahora es una <strong>red compartida</strong>: los drones pueden transferirse entre sedes, hay estaciones de carga intermedias, y una flota de 100 drones de 5 tipos gestiona entregas entre campus.</p>
+    <p><strong>Nuevas funcionalidades:</strong> Rutas multi-etapa (drone a estaci&oacute;n de carga, carga, continuar ruta), optimizaci&oacute;n de flota compartida, analytics de eficiencia por sede, autorizaci&oacute;n de la Aerocivil para vuelos inter-sede, y un panel de superadmin para la red completa.</p>
+    <p><strong>Nuevos actores:</strong> Superadministrador de red, Coordinador por sede, Aerocivil (sistema externo de regulaci&oacute;n a&eacute;rea), Estaci&oacute;n de carga aut&oacute;noma.</p>
+    <div class="enota">&#128161; En Infernape no se agregan features arbitrarias. Se profundiza en calidad: c&oacute;digo con m&aacute;s patrones, requerimientos sin ambig&uuml;edades, cobertura de pruebas m&aacute;s alta, dise&ntilde;o m&aacute;s consistente.</div>
+  </div>
+</div>
+
+<div class="lkb" id="lock-infernape"><span class="lki">&#128274;</span><h3>Nivel bloqueado</h3><p>Completa todos los retos de Monferno para desbloquear Infernape. Llevas <span id="lock-inf-count">0</span>/14.</p></div>
+<div id="infernape-content">
+<div class="lp inf">
+  <div class="lprow"><span class="lplb">Retos Infernape completados</span><span class="lpv" id="inf-stat">0 / 14</span></div>
+  <div class="lpt"><div class="lpf" id="inf-fill" style="width:0%"></div></div>
+</div>
+
+<div class="tdiv">01 &middot; Streams &amp; Lambdas</div>
+<div class="card" id="inf-streams">
+<div class="ch-hd" onclick="toggle('inf-streams')">
+  <div class="ico">&#9889;</div><div class="cm">
+  <div class="ct">Analytics de eficiencia de la red en una sola pasada de Stream</div>
+  <div class="cs">Optional &middot; teeing &middot; Comparator compuesto &middot; groupingBy anidado</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-streams')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El desaf&iacute;o de escala</h3>
+<p>El superadmin necesita el dashboard de eficiencia de las 4 sedes. 100 drones, miles de misiones. La eficiencia del c&oacute;digo importa.</p>
+<pre><span class="cmt">// Optional — sedes que no han tenido misiones hoy</span>
+<span class="ty">Optional</span>&lt;<span class="ty">Sede</span>&gt; sedeMasActiva = sedes.<span class="fn">stream</span>()
+    .<span class="fn">max</span>(<span class="ty">Comparator</span>.<span class="fn">comparingLong</span>(<span class="ty">Sede</span>::misionesCompletadasHoy));
+sedeMasActiva.<span class="fn">ifPresentOrElse</span>(
+    s -> dashboard.<span class="fn">setLider</span>(s),
+    () -> dashboard.<span class="fn">setSinActividad</span>()
+);
+
+<span class="cmt">// teeing — dos métricas en una pasada</span>
+<span class="ty">Map.Entry</span>&lt;<span class="ty">Long</span>, <span class="ty">Double</span>&gt; stats = misiones.<span class="fn">stream</span>()
+    .<span class="fn">filter</span>(m -> m.sede().<span class="fn">equals</span>(sede))
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">teeing</span>(
+        <span class="ty">Collectors</span>.<span class="fn">counting</span>(),
+        <span class="ty">Collectors</span>.<span class="fn">averagingDouble</span>(<span class="ty">Mision</span>::tiempoEntregaMinutos),
+        <span class="ty">Map</span>::<span class="fn">entry</span>
+    ));
+
+<span class="cmt">// Comparator compuesto — ranking de sedes</span>
+sedes.<span class="fn">stream</span>()
+    .<span class="fn">sorted</span>(<span class="ty">Comparator</span>.<span class="fn">comparingDouble</span>(<span class="ty">Sede</span>::tasaExito).<span class="fn">reversed</span>()
+        .<span class="fn">thenComparingLong</span>(<span class="ty">Sede</span>::misionesCompletadasHoy).<span class="fn">reversed</span>()
+        .<span class="fn">thenComparing</span>(<span class="ty">Sede</span>::nombre))
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">toList</span>());
+
+<span class="cmt">// groupingBy anidado — drones por sede por tipo por estado</span>
+<span class="ty">Map</span>&lt;<span class="ty">String</span>, <span class="ty">Map</span>&lt;<span class="ty">TipoDrone</span>, <span class="ty">Long</span>&gt;&gt; porSedeTipo = flota.<span class="fn">stream</span>()
+    .<span class="fn">collect</span>(<span class="ty">Collectors</span>.<span class="fn">groupingBy</span>(
+        <span class="ty">Drone</span>::sede,
+        <span class="ty">Collectors</span>.<span class="fn">groupingBy</span>(<span class="ty">Drone</span>::tipo, <span class="ty">Collectors</span>.<span class="fn">counting</span>())));
+</pre>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>En una sola pasada de Stream calcula para cada sede: tasa de &eacute;xito (misiones entregadas/total), tiempo promedio de entrega, drone m&aacute;s utilizado, y porcentaje de misiones urgentes. Usa Optional para sedes sin actividad. Escribe pruebas param&eacute;tricas con al menos 4 escenarios (sede vac&iacute;a, sede con 1 misi&oacute;n, empate entre sedes, red completa).</div>
+</div></div>
+
+<div class="tdiv">02 &middot; GitHub</div>
+<div class="card" id="inf-git">
+<div class="ch-hd" onclick="toggle('inf-git')">
+  <div class="ico">&#127807;</div><div class="cm">
+  <div class="ct">Release branch, hotfix y tags de versi&oacute;n para Enterprise</div>
+  <div class="cs">release/ &middot; hotfix/ &middot; tags sem&aacute;nticos &middot; commits convencionales</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-git')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El flujo completo para Enterprise</h3>
+<pre><span class="cmt"># Preparar el release</span>
+git checkout develop
+git checkout -b release/v3.0.0
+git commit -m <span class="st">"chore: bump version 3.0.0-SNAPSHOT → 3.0.0"</span>
+git checkout main
+git merge release/v3.0.0
+git tag -a v3.0.0 -m <span class="st">"SkyCampus Enterprise: red multi-sede, 5 tipos drone"</span>
+git push origin main --tags
+git checkout develop
+git merge release/v3.0.0
+git branch -d release/v3.0.0
+
+<span class="cmt"># Bug crítico en producción: hotfix</span>
+git checkout main
+git checkout -b hotfix/ruta-inter-sede-unal
+git commit -m <span class="st">"fix: corrige cálculo de ruta entre ECI y UNAL con viento sur"</span>
+git checkout main
+git merge hotfix/ruta-inter-sede-unal
+git tag -a v3.0.1 -m <span class="st">"Hotfix: cálculo de ruta con viento sur"</span>
+git checkout develop
+git merge hotfix/ruta-inter-sede-unal</pre>
+<div class="nt info"><strong>Commits convencionales (Conventional Commits)</strong><code>feat:</code> nueva funcionalidad &nbsp;|&nbsp; <code>fix:</code> correcci&oacute;n de bug &nbsp;|&nbsp; <code>chore:</code> mantenimiento &nbsp;|&nbsp; <code>docs:</code> solo documentaci&oacute;n &nbsp;|&nbsp; <code>test:</code> solo pruebas &nbsp;|&nbsp; <code>refactor:</code> refactorizaci&oacute;n</div>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Simula el lanzamiento de v3.0.0 en tu repo: crea release/v3.0.0 con 2 commits de preparaci&oacute;n, mergea a main y develop, etiqueta. Luego simula un hotfix cr&iacute;tico. Usa commits convencionales en todo. Comparte <code>git log --graph</code> final.</div>
+</div></div>
+
+<div class="tdiv">03 &middot; Patrones de Dise&ntilde;o</div>
+<div class="card" id="inf-patrones">
+<div class="ch-hd" onclick="toggle('inf-patrones')">
+  <div class="ico">&#129513;</div><div class="cm">
+  <div class="ct">Arquitectura de SkyCampus Enterprise con 4+ patrones combinados</div>
+  <div class="cs">Composite &middot; Abstract Factory &middot; Strategy &middot; Observer &middot; cu&aacute;ndo NO usar</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-patrones')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Nuevos problemas, nuevos patrones</h3>
+<p><strong>Problema 1 (Composite):</strong> Una "ruta" en Enterprise puede ser simple (punto A a punto B) o compuesta (punto A &rarr; estaci&oacute;n de carga &rarr; punto B). Ambas deben calcularse y ejecutarse de la misma manera desde el <code>GestorMisiones</code>.</p>
+<p><strong>Problema 2 (Abstract Factory):</strong> Cada sede tiene su propio panel de monitoreo con reportes en formato diferente (ECI usa HTML, UNAL usa PDF, Uniandes usa JSON para su propio dashboard). Abstract Factory crea la familia de reportes coherente por sede.</p>
+<h3>Cu&aacute;ndo NO usar un patr&oacute;n</h3>
+<table>
+<tr><th>Patr&oacute;n</th><th>No usar cuando...</th><th>Alternativa</th></tr>
+<tr><td>Singleton</td><td>Estado mutable compartido entre hilos (flota compartida)</td><td>Inyecci&oacute;n de dependencias con scope de sesi&oacute;n</td></tr>
+<tr><td>Abstract Factory</td><td>Solo hay una familia de componentes</td><td>Factory Method simple</td></tr>
+<tr><td>Composite</td><td>La jerarqu&iacute;a nunca tiene m&aacute;s de 2 niveles</td><td>Lista simple con herencia</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Dise&ntilde;a la arquitectura de rutas multi-etapa de Enterprise usando m&iacute;nimo 4 patrones: Composite (rutas simples y compuestas), Strategy (algoritmos de optimizaci&oacute;n de ruta), Observer (alertas de cada etapa), Factory Method (crear el tipo de drone correcto para cada etapa de la ruta). Para cada patr&oacute;n: diagrama + implementaci&oacute;n Java + justificaci&oacute;n de por qu&eacute; ese patr&oacute;n y no otro.</div>
+</div></div>
+
+<div class="tdiv">04 &middot; Principios SOLID</div>
+<div class="card" id="inf-solid">
+<div class="ch-hd" onclick="toggle('inf-solid')">
+  <div class="ico">&#129395;</div><div class="cm">
+  <div class="ct">Arquitectura por capas &mdash; AsignadorMision testeable sin API del clima real</div>
+  <div class="cs">Dominio sin dependencias &middot; Constructor injection &middot; 100% testeable</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-solid')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<pre><span class="cmt">// CAPA DE DOMINIO — cero dependencias externas (sin Spring, sin APIs)</span>
+<span class="kw">interface</span> <span class="ty">RepositorioFlota</span> {
+    <span class="ty">List</span>&lt;<span class="ty">Drone</span>&gt; <span class="fn">findDisponibles</span>(<span class="ty">String</span> sede);
+}
+<span class="kw">interface</span> <span class="ty">ServicioClima</span> {
+    <span class="kw">boolean</span> <span class="fn">condicionesAptas</span>(<span class="ty">String</span> origen, <span class="ty">String</span> destino);
+}
+<span class="kw">record</span> <span class="ty">Drone</span>(...) {}  <span class="cmt">// sin anotaciones de Spring ni JPA</span>
+
+<span class="cmt">// CAPA DE APLICACIÓN — solo interfaces (DIP aplicado)</span>
+<span class="kw">class</span> <span class="ty">AsignadorMision</span> {
+    <span class="kw">private final</span> <span class="ty">RepositorioFlota</span>   repo;
+    <span class="kw">private final</span> <span class="ty">ServicioClima</span>      clima;
+    <span class="kw">private final</span> <span class="ty">EstrategiaAsignacion</span> estrategia;
+    <span class="kw">private final</span> <span class="ty">ObservadorDrone</span>    notificador;
+
+    <span class="kw">public</span> <span class="ty">AsignadorMision</span>(
+            <span class="ty">RepositorioFlota</span> r, <span class="ty">ServicioClima</span> c,
+            <span class="ty">EstrategiaAsignacion</span> e, <span class="ty">ObservadorDrone</span> n) {
+        this.repo = r; this.clima = c;
+        this.estrategia = e; this.notificador = n;
+    }
+    <span class="cmt">// 100% testeable: solo inyectar mocks en las pruebas</span>
+}
+
+<span class="cmt">// CAPA DE INFRAESTRUCTURA — implementaciones concretas</span>
+<span class="kw">class</span> <span class="ty">RepositorioFlotaJPA</span> <span class="kw">implements</span> <span class="ty">RepositorioFlota</span> { <span class="cmt">// JPA aquí</span> }
+<span class="kw">class</span> <span class="ty">ServicioClimaOpenWeather</span> <span class="kw">implements</span> <span class="ty">ServicioClima</span> { <span class="cmt">// HTTP aquí</span> }</pre>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Implementa el <code>AsignadorMision</code> de Enterprise con 3 capas. Demuestra con pruebas que la capa de aplicaci&oacute;n funciona sin ninguna llamada HTTP real ni base de datos, usando solo Mockito. La capa de dominio (records y interfaces) no importa ninguna anotaci&oacute;n de Spring ni librer&iacute;a externa.</div>
+</div></div>
+
+<div class="tdiv">05 &middot; Diagrama de Contexto</div>
+<div class="card" id="inf-contexto">
+<div class="ch-hd" onclick="toggle('inf-contexto')">
+  <div class="ico">&#128506;</div><div class="cm">
+  <div class="ct">C4 Nivel 1 y Nivel 2 &mdash; La red Enterprise completa</div>
+  <div class="cs">Todos los actores &middot; Contenedores internos &middot; Protocolos</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-contexto')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La evoluci&oacute;n del diagrama a trav&eacute;s de los 3 niveles</h3>
+<table>
+<tr><th>Nivel</th><th>Actores</th><th>Sistemas externos</th></tr>
+<tr><td>Chimchar (MVP)</td><td>Operador, Solicitante, Admin</td><td>Ninguno</td></tr>
+<tr><td>Monferno (v2)</td><td>+T&eacute;cnico de mantenimiento</td><td>API Clima, Control A&eacute;reo, Sistema Alertas</td></tr>
+<tr><td>Infernape (Enterprise)</td><td>+Superadmin, Coordinador sede</td><td>+Aerocivil, ERP universitario, Analytics platform</td></tr>
+</table>
+<h3>El Nivel 2 &mdash; contenedores internos</h3>
+<pre><span class="cmt">SkyCampus Enterprise &mdash; contenedores:
+  &#9632; App Web Operadores (por sede)   &mdash; HTTPS &rarr; API Gateway
+  &#9632; Panel Superadmin               &mdash; HTTPS &rarr; API Gateway
+  &#9632; API Gateway                     &mdash; interno &rarr; servicios
+  &#9632; Servicio de Misiones            &mdash; JDBC &rarr; BD Misiones
+  &#9632; Servicio de Flota              &mdash; JDBC &rarr; BD Flota
+  &#9632; Servicio de Rutas              &mdash; HTTP &rarr; API Clima / Aerocivil
+  &#9632; Servicio de Analytics          &mdash; REST &rarr; Plataforma Analytics</span></pre>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Dibuja el C4 Nivel 1 (contexto Enterprise) y Nivel 2 (contenedores). Compara los 3 diagramas de contexto (MVP, v2, Enterprise) en un mismo documento. ¿Qu&eacute; creci&oacute;? ¿Qu&eacute; se mantuvo? ¿C&oacute;mo evolucion&oacute; la complejidad sin perder la coherencia?</div>
+</div></div>
+
+<div class="tdiv">06 &middot; RF y RNF</div>
+<div class="card" id="inf-rf">
+<div class="ch-hd" onclick="toggle('inf-rf')">
+  <div class="ico">&#128203;</div><div class="cm">
+  <div class="ct">Matriz de trazabilidad &mdash; RF sin ambig&uuml;edades ni contradicciones</div>
+  <div class="cs">Trazabilidad CU &rarr; HU &rarr; Prueba &middot; Detectar conflictos</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-rf')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Una contradicci&oacute;n real de Enterprise que debes resolver</h3>
+<div class="two">
+<div class="box"><h4>RF-12</h4><p>El coordinador de cada sede puede configurar el radio m&aacute;ximo de vuelo de los drones de su sede.</p></div>
+<div class="box"><h4>RNF-09</h4><p>Las rutas inter-sede deben respetar el espacio a&eacute;reo controlado por la Aerocivil. Ning&uacute;n drone puede volar a m&aacute;s de 120m de altura en zona urbana.</p></div>
+</div>
+<p style="font-size:.84rem;color:var(--mu);margin-top:.5rem">Tensi&oacute;n real: el coordinador configura el radio, pero la Aerocivil define restricciones que no pueden ignorarse. El sistema debe hacer cumplir el RNF incluso si el coordinador configura un radio que lo viola.</p>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Construye la matriz de trazabilidad de SkyCampus Enterprise: 8 RF + 4 RNF. Para cada RF: c&oacute;digo, nombre, MoSCoW, CU relacionado, HU en Jira, y prueba que lo valida. Detecta y resuelve la tensi&oacute;n RF-12/RNF-09 y cualquier otra contradicci&oacute;n. La matriz demuestra que ning&uacute;n RF queda sin CU ni sin prueba.</div>
+</div></div>
+
+<div class="tdiv">07 &middot; Plantilla DOSW</div>
+<div class="card" id="inf-plantilla">
+<div class="ch-hd" onclick="toggle('inf-plantilla')">
+  <div class="ico">&#128196;</div><div class="cm">
+  <div class="ct">RF "Planificar ruta multi-etapa inter-sede" &mdash; m&aacute;xima complejidad</div>
+  <div class="cs">Sub-objetos profundos &middot; Flujos ramificados &middot; Reglas de negocio complejas</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-plantilla')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<p>El RF m&aacute;s complejo del sistema: planificar la ruta de un drone que debe ir de la ECI a Uniandes pasando por una estaci&oacute;n de carga en la 116. Involucra: verificaci&oacute;n con Aerocivil, asignaci&oacute;n de estaci&oacute;n intermedia, gesti&oacute;n de bater&iacute;a en cada etapa.</p>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Plantilla DOSW completa para el RF "SC-15 Planificar ruta multi-etapa inter-sede". Datos de entrada: misi&oacute;n con sub-objetos (paquete con sus atributos, sede origen, sede destino, restricciones especiales), condiciones actuales del espacio a&eacute;reo. Flujo b&aacute;sico: verificar Aerocivil &rarr; calcular etapas &rarr; asignar estaciones de carga &rarr; asignar drones por etapa &rarr; confirmar ruta &rarr; iniciar vuelo. Flujos alternos: Aerocivil rechaza, no hay estaci&oacute;n de carga disponible, paquete demasiado pesado para ruta larga. Reglas: el drone no puede volar m&aacute;s de 5km con carga sin recargar, el paquete no puede quedar en estaci&oacute;n m&aacute;s de 30min. TODO sin "Seleccionador" ni "Lista de objetos".</div>
+</div></div>
+
+<div class="tdiv">08 &middot; Identidad y UX</div>
+<div class="card" id="inf-ux">
+<div class="ch-hd" onclick="toggle('inf-ux')">
+  <div class="ico">&#127912;</div><div class="cm">
+  <div class="ct">Sistema de dise&ntilde;o multi-sede con theming por universidad</div>
+  <div class="cs">Design tokens &middot; Un sistema, 4 identidades &middot; Componentes reutilizables</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-ux')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>El reto: una app, cuatro identidades</h3>
+<p>SkyCampus Enterprise es la misma aplicaci&oacute;n para las 4 universidades, pero cada una tiene su identidad. La soluci&oacute;n son <strong>design tokens</strong>: variables que cambian entre sedes sin modificar los componentes.</p>
+<table>
+<tr><th>Token</th><th>ECI</th><th>UNAL</th><th>Uniandes</th><th>EAFIT</th></tr>
+<tr><td>--color-primary</td><td>#00457C</td><td>#7B0000</td><td>#0057A8</td><td>#2D6A4F</td></tr>
+<tr><td>--color-alert</td><td>#E63946</td><td>#E63946</td><td>#E63946</td><td>#E63946</td></tr>
+<tr><td>--font-ui</td><td>Space Grotesk</td><td>Merriweather</td><td>Inter</td><td>Source Sans</td></tr>
+<tr><td>--border-radius</td><td>10px</td><td>4px</td><td>8px</td><td>12px</td></tr>
+</table>
+<p>Los componentes (Tarjeta de drone, Panel de misi&oacute;n, Indicador de bater&iacute;a) son id&eacute;nticos. Solo los tokens cambian. A&ntilde;adir una quinta universidad solo requiere definir sus tokens.</p>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Documenta los design tokens de SkyCampus Enterprise. Dise&ntilde;a el "Panel de misi&oacute;n activa" en 3 variantes (ECI, UNAL, Uniandes) usando el mismo componente con diferentes tokens. Demuestra que el componente "Tarjeta de drone" funciona con las 3 identidades sin modificar su estructura HTML/CSS. La especificaci&oacute;n de tokens debe ser suficiente para que un nuevo equipo configure una nueva sede en menos de 2 horas.</div>
+</div></div>
+
+<div class="tdiv">09 &middot; Agilismo</div>
+<div class="card" id="inf-agil">
+<div class="ch-hd" onclick="toggle('inf-agil')">
+  <div class="ico">&#127939;</div><div class="cm">
+  <div class="ct">Roadmap de SkyCampus Enterprise &mdash; 3 sprints con m&eacute;tricas reales</div>
+  <div class="cs">Velocity &middot; Burndown &middot; Retrospectiva &middot; Roadmap trimestral</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-agil')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>Las 4 ceremonias con SkyCampus Enterprise</h3>
+<table>
+<tr><th>Ceremonia</th><th>Qu&eacute; pasa en SkyCampus Enterprise</th><th>Duraci&oacute;n</th></tr>
+<tr><td>Sprint Planning</td><td>Equipo selecciona HU del backlog, estima, asigna responsables por m&oacute;dulo</td><td>2-4h</td></tr>
+<tr><td>Daily Scrum</td><td>&#191;Qu&eacute; hice? &#191;Qu&eacute; har&eacute;? &#191;Impedimento? Uno por persona, 15 min total</td><td>15 min</td></tr>
+<tr><td>Sprint Review</td><td>Demo: ruta multi-etapa funcionando entre ECI y UNAL en el simulador</td><td>2h</td></tr>
+<tr><td>Retrospectiva</td><td>&#191;Qu&eacute; sali&oacute; bien? &#191;Qu&eacute; mejorar? 3 compromisos concretos con due date</td><td>1h</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Planifica el roadmap de Enterprise para un trimestre (3 sprints de 2 semanas): Sprint 1 (conectividad multi-sede b&aacute;sica), Sprint 2 (rutas multi-etapa + estaciones de carga), Sprint 3 (analytics + panel superadmin). Para cada sprint: HU seleccionadas, story points totales, velocity estimada. Ejecuta la retrospectiva del Sprint 1 simulado: 3 que salieron bien, 3 a mejorar, compromisos con responsable y fecha.</div>
+</div></div>
+
+<div class="tdiv">10 &middot; Casos de Uso</div>
+<div class="card" id="inf-uc">
+<div class="ch-hd" onclick="toggle('inf-uc')">
+  <div class="ico">&#127919;</div><div class="cm">
+  <div class="ct">CU de Enterprise organizado en paquetes por m&oacute;dulo</div>
+  <div class="cs">Paquetes &middot; Herencia de actores &middot; Sistema completo comprensible</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-uc')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>De 1 diagrama (Chimchar) a paquetes por m&oacute;dulo (Infernape)</h3>
+<pre><span class="cmt">Paquete: Gesti&oacute;n de Misiones
+  Ver solicitudes pendientes, Crear misi&oacute;n, Cancelar misi&oacute;n, Ver historial
+
+Paquete: Gesti&oacute;n de Flota
+  Ver estado de drones, Asignar drone, Transferir drone entre sedes, Ver analytics
+
+Paquete: Rutas y Navegaci&oacute;n
+  Calcular ruta simple, Calcular ruta multi-etapa, Autorizar con Aerocivil
+
+Paquete: Mantenimiento
+  Diagnosticar fallo, Marcar en mantenimiento, Aprobar retorno a servicio
+
+Paquete: Administraci&oacute;n
+  Configurar sede, Gestionar usuarios, Ver dashboard Enterprise, Generar reportes</span></pre>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Dibuja el diagrama de CU completo de SkyCampus Enterprise en 5 paquetes. Herencia de actores: Coordinador de sede extiende Operador, Superadmin extiende Coordinador. Todos los include y extend justificados. El diagrama debe ser comprensible para el rector de una universidad sin conocimientos t&eacute;cnicos &mdash; si hay que explicarlo, es un problema de dise&ntilde;o.</div>
+</div></div>
+
+<div class="tdiv">11 &middot; Mocks y Prototipos</div>
+<div class="card" id="inf-mocks">
+<div class="ch-hd" onclick="toggle('inf-mocks')">
+  <div class="ico">&#128444;</div><div class="cm">
+  <div class="ct">Prototipo navegable del dashboard Enterprise multi-sede</div>
+  <div class="cs">Multi-theme &middot; Todos los estados &middot; Nielsen 10/10 &middot; Testeable con usuario</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-mocks')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La diferencia entre mock y prototipo</h3>
+<div class="two">
+<div class="box"><h4>Mock (Chimchar)</h4><p>Imagen est&aacute;tica. Muestra c&oacute;mo se ver&iacute;a. No se puede interactuar con &eacute;l.</p></div>
+<div class="box"><h4>Prototipo (Infernape)</h4><p>Simula la app: clics, transiciones, estados. Un usuario puede recorrer el flujo completo sin que nadie se lo explique.</p></div>
+</div>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Crea un prototipo navegable del dashboard Enterprise de SkyCampus. Debe: 1) Mostrar la red completa de 4 sedes con el estado de la flota en tiempo real. 2) Funcionar con 2 identidades (ECI y UNAL) solo cambiando tokens. 3) Incluir el flujo completo de planificaci&oacute;n de ruta inter-sede con todos los estados de error. 4) Ser probado por un compa&ntilde;ero sin instrucciones: si pregunta algo, hay un problema de Nielsen que debes corregir. Documenta el resultado de la prueba.</div>
+</div></div>
+
+<div class="tdiv">12 &middot; TDD</div>
+<div class="card" id="inf-tdd">
+<div class="ch-hd" onclick="toggle('inf-tdd')">
+  <div class="ico">&#129514;</div><div class="cm">
+  <div class="ct">3 capas de pruebas para el AsignadorMision de Enterprise</div>
+  <div class="cs">Unitarias &middot; Integraci&oacute;n &middot; Cobertura 85%+ &middot; Todos los edge cases</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-tdd')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La pirámide de pruebas de SkyCampus Enterprise</h3>
+<table>
+<tr><th>Capa</th><th>Qu&eacute; prueba</th><th>Herramienta</th><th>Velocidad</th></tr>
+<tr><td>Unitarias (base)</td><td>L&oacute;gica de negocio aislada: ValidadorMision, EstrategiaAsignacion</td><td>JUnit 5 + Mockito</td><td>Muy r&aacute;pido (ms)</td></tr>
+<tr><td>Integraci&oacute;n (medio)</td><td>Capas juntas + BD en memoria + servicios simulados</td><td>@SpringBootTest + H2</td><td>Segundos</td></tr>
+<tr><td>E2E simulado (punta)</td><td>Flujo completo de un RF desde el endpoint hasta la BD</td><td>MockMvc + datos reales</td><td>Segundos</td></tr>
+</table>
+<pre><span class="fn">@SpringBootTest</span>
+<span class="fn">@AutoConfigureMockMvc</span>
+<span class="kw">class</span> <span class="ty">MisionIntegrationTest</span> {
+    <span class="fn">@Autowired</span> <span class="ty">MockMvc</span> mvc;
+    <span class="fn">@MockBean</span> <span class="ty">ServicioClima</span> climaMock;
+
+    <span class="fn">@Test</span>
+    <span class="kw">void</span> <span class="fn">crearMision_climaApto_retornaOkConDroneAsignado</span>() <span class="kw">throws</span> <span class="ty">Exception</span> {
+        <span class="ty">Mockito</span>.<span class="fn">when</span>(climaMock.<span class="fn">condicionesAptas</span>(<span class="ty">Mockito</span>.<span class="fn">any</span>(), <span class="ty">Mockito</span>.<span class="fn">any</span>()))
+            .<span class="fn">thenReturn</span>(<span class="kw">true</span>);
+        mvc.<span class="fn">perform</span>(<span class="fn">post</span>(<span class="st">"/api/v3/misiones"</span>)
+            .<span class="fn">contentType</span>(<span class="ty">MediaType</span>.APPLICATION_JSON)
+            .<span class="fn">content</span>(<span class="st">"{\"destino\":\"UNAL\",\"pesoPaquete\":300,\"prioridad\":\"NORMAL\"}"</span>))
+            .<span class="fn">andExpect</span>(<span class="fn">status</span>().<span class="fn">isCreated</span>())
+            .<span class="fn">andExpect</span>(<span class="fn">jsonPath</span>(<span class="st">"$.droneAsignado.id"</span>).<span class="fn">exists</span>())
+            .<span class="fn">andExpect</span>(<span class="fn">jsonPath</span>(<span class="st">"$.estado"</span>).<span class="fn">value</span>(<span class="st">"EN_VUELO"</span>));
+    }
+}</pre>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Implementa las 3 capas de pruebas para SkyCampus Enterprise. Unitarias del <code>AsignadorMision</code>, integraci&oacute;n del endpoint REST, y cobertura JaCoCo &ge;85% incluyendo branch coverage. Los 5 flujos alternos (clima adverso, sin drones, paquete pesado, Aerocivil rechaza, sede inactiva) deben tener su prueba.</div>
+</div></div>
+
+<div class="tdiv">13 &middot; JaCoCo — Cobertura de código</div>
+<div class="card" id="inf-sonar">
+<div class="ch-hd" onclick="toggle('inf-sonar')">
+  <div class="ico">&#128202;</div><div class="cm">
+  <div class="ct">SkyCampus Enterprise: est&aacute;ndares de calidad de producci&oacute;n</div>
+  <div class="cs">85%+ cobertura &middot; 0 bugs &middot; Deuda t&eacute;cnica &lt;15min &middot; Evoluci&oacute;n de m&eacute;tricas</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-sonar')">&#9744; Listo</button><span class="chev" style="color:var(--mu);font-size:.85rem;transition:transform .2s;flex-shrink:0">&#8250;</span>
+</div>
+<div class="cb">
+<h3>La evoluci&oacute;n de los est&aacute;ndares a trav&eacute;s de los 3 niveles</h3>
+<table>
+<tr><th>M&eacute;trica</th><th>MVP (Chimchar)</th><th>v2 (Monferno)</th><th>Enterprise (Infernape)</th></tr>
+<tr><td>Line coverage</td><td>80%</td><td>80%</td><td>&ge;85%</td></tr>
+<tr><td>Branch coverage</td><td>&mdash;</td><td>70%</td><td>&ge;75%</td></tr>
+<tr><td>Bugs SonarQube</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Vulnerabilidades</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Deuda t&eacute;cnica</td><td>0</td><td>&lt;30 min</td><td>&lt;15 min</td></tr>
+<tr><td>Duplicaci&oacute;n</td><td>&mdash;</td><td>&lt;5%</td><td>&lt;3%</td></tr>
+</table>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Configura el Quality Gate de Enterprise con los est&aacute;ndares de la tabla. Analiza el proyecto con SonarQube. Logra los 6 indicadores en verde. Para cada issue que encuentres: identifica la causa ra&iacute;z, corr&iacute;gela con refactorizaci&oacute;n o prueba adicional (nunca suprimiendo el issue), y documenta el commit con el que lo solucionaste.</div>
+</div></div>
+
+<div class="tdiv">14 &middot; SonarQube — Análisis estático de calidad</div>
+<div class="card" id="inf-sonarq">
+<div class="ch-hd" onclick="toggle('inf-sonarq')">
+  <div class="ico">🔍</div><div class="cm">
+  <div class="ct">Analizar la calidad del código con SonarQube</div>
+  <div class="cs">Code smells · Deuda técnica · Duplicaciones · Vulnerabilidades</div>
+  </div><button class="db undone" onclick="markDone(event,'inf-sonarq')">&#9744; Listo</button><span class="chv">&#8250;</span>
+</div>
+<div class="cb">
+<p>En el nivel Enterprise con 60 drones la complejidad es máxima. SonarQube debe mostrar que el código de producción es mantenible: sin duplicaciones entre zonas, sin métodos que superen la complejidad ciclomática de 10, cobertura ≥85%.</p>
+<div class="nt tip"><strong>&#127919; Reto Infernape</strong>Ejecuta SonarQube en el sistema Enterprise. Documenta la deuda técnica por módulo (PlanificadorRuta, GestorZonas, MonitorFlota). Corrige todos los issues críticos y muestra el Quality Gate final en verde.</div>
+</div></div>
+
+<div class="badge inf" id="badge-infernape" style="display:block">
+<span class="bi">&#128293;&#128081;&#128293;</span>
+<h3>&#161;SkyCampus Enterprise est&aacute; listo para volar!</h3>
+<p>Llevaste el mismo sistema de 5 drones en la ECI a una red de 100 drones entre 4 universidades. Eso es ingenier&iacute;a de software.</p>
+</div>
+</div></div>
+
+</main>
+<footer>DOSW Company &middot; Escuela Colombiana de Ingenier&iacute;a &middot; 2026-2 &middot; Prof. Andr&eacute;s Mart&iacute;n Cant&oacute;r Urrego &middot; Sistema SkyCampus</footer>
+
+<script>
+const CH=['ch-streams','ch-git','ch-patrones','ch-solid','ch-contexto','ch-rf','ch-plantilla','ch-ux','ch-agil','ch-uc','ch-mocks','ch-tdd','ch-sonar','ch-sonarq'];
+const MO=['mo-streams','mo-git','mo-patrones','mo-solid','mo-contexto','mo-rf','mo-plantilla','mo-ux','mo-agil','mo-uc','mo-mocks','mo-tdd','mo-sonar','mo-sonarq'];
+const IN=['inf-streams','inf-git','inf-patrones','inf-solid','inf-contexto','inf-rf','inf-plantilla','inf-ux','inf-agil','inf-uc','inf-mocks','inf-tdd','inf-sonar','inf-sonarq'];
+
+function st(){try{return JSON.parse(localStorage.getItem('skycampus_p')||'{}');}catch{return{};}}
+function sv(s){localStorage.setItem('skycampus_p',JSON.stringify(s));}
+function uniq(a){return[...new Set(a)];}
+function cnt(ids,s){return uniq(ids).filter(id=>s[id]).length;}
+
+function markDone(e,id){e.stopPropagation();const s=st();s[id]=!s[id];sv(s);renderAll();}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+function toggleEnu(h){const b=h.parentNode.querySelector('.enu-b');b.style.display=b.style.display==='none'?'block':'none';}
+function setLevel(lv){
+  document.querySelectorAll('.ls').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.eb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('level-'+lv).classList.add('active');
+  const map={chimchar:'ch',monferno:'mo',infernape:'inf'};
+  document.querySelector('.eb.'+map[lv]).classList.add('active');
+}
+
+function renderAll(){
+  const s=st();
+  const chN=cnt(CH,s),moN=cnt(MO,s),infN=cnt(IN,s),tot=chN+moN+infN;
+
+  // update done buttons
+  [...CH,...MO,...IN].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const btn=el.querySelector('.db');if(!btn)return;
+    if(s[id]){btn.className='db done';btn.textContent='\u2713 Listo';}
+    else{btn.className='db undone';btn.textContent='\u2610 Listo';}
+  });
+
+  // chimchar
+  const chF=document.getElementById('ch-fill'),chS=document.getElementById('ch-stat');
+  if(chF)chF.style.width=Math.round(chN/14*100)+'%';
+  if(chS)chS.textContent=chN+' / 14';
+  const chB=document.getElementById('badge-chimchar');
+  if(chB)chB.style.display=chN>=14?'block':'none';
+
+  // monferno lock
+  const lmC=document.getElementById('lock-mo-count');if(lmC)lmC.textContent=chN;
+  const lm=document.getElementById('lock-monferno'),mc=document.getElementById('monferno-content');
+  if(lm)lm.style.display=chN>=14?'none':'block';
+  if(mc)mc.style.display=chN>=14?'block':'none';
+  const moF=document.getElementById('mo-fill'),moS=document.getElementById('mo-stat');
+  if(moF)moF.style.width=Math.round(moN/14*100)+'%';
+  if(moS)moS.textContent=moN+' / 14';
+  const moB=document.getElementById('badge-monferno');
+  if(moB)moB.style.display=moN>=14?'block':'none';
+
+  // infernape lock
+  const liC=document.getElementById('lock-inf-count');if(liC)liC.textContent=moN;
+  const li=document.getElementById('lock-infernape'),ic=document.getElementById('infernape-content');
+  if(li)li.style.display=moN>=14?'none':'block';
+  if(ic)ic.style.display=moN>=14?'block':'none';
+  const inF=document.getElementById('inf-fill'),inS=document.getElementById('inf-stat');
+  if(inF)inF.style.width=Math.round(infN/14*100)+'%';
+  if(inS)inS.textContent=infN+' / 14';
+
+  // global
+  const gf=document.getElementById('gf'),gv=document.getElementById('gv');
+  if(gf)gf.style.width=Math.round(tot/42*100)+'%';
+  if(gv)gv.textContent=tot+' / 42 retos';
+}
+
+renderAll();
+</script>
+</body></html>
