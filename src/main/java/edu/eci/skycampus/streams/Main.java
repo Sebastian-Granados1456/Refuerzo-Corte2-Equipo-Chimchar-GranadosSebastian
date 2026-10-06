@@ -1,5 +1,7 @@
 package edu.eci.skycampus.streams;
 
+import edu.eci.skycampus.model.Drone;
+
 import java.util.List;
 
 public class Main {
