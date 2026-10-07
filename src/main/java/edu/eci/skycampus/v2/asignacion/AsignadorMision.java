@@ -2,7 +2,6 @@ package edu.eci.skycampus.v2.asignacion;
 
 import edu.eci.skycampus.v2.model.Drone;
 import edu.eci.skycampus.v2.model.Mision;
-import edu.eci.skycampus.v2.model.TipoDrone;
 
 import java.util.Comparator;
 import java.util.List;
@@ -21,15 +20,7 @@ public class AsignadorMision {
 
     public List<Drone> filtrarPorCapacidadPeso(List<Drone> flota, int pesoPaqueteGramos) {
         return flota.stream()
-                .filter(d -> capacidadMaximaGramos(d.tipo()) >= pesoPaqueteGramos)
+                .filter(d -> d.tipo().capacidadMaximaGramos() >= pesoPaqueteGramos)
                 .toList();
-    }
-
-    private int capacidadMaximaGramos(TipoDrone tipo) {
-        return switch (tipo) {
-            case MINI -> 500;
-            case EXPRESS -> 800;
-            case CARGO -> 2000;
-        };
     }
 }

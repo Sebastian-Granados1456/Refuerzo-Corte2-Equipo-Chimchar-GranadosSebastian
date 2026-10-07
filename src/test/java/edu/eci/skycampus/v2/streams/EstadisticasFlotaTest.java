@@ -21,10 +21,10 @@ class EstadisticasFlotaTest {
 
     private static final LocalDateTime AHORA = LocalDateTime.of(2026, 10, 7, 10, 0);
 
-    private final Drone m01 = new Drone("M-01", TipoDrone.MINI, 80, true, EstadoDrone.DISPONIBLE);
-    private final Drone m02 = new Drone("M-02", TipoDrone.MINI, 60, true, EstadoDrone.DISPONIBLE);
-    private final Drone c01 = new Drone("C-01", TipoDrone.CARGO, 90, false, EstadoDrone.EN_VUELO);
-    private final Drone e01 = new Drone("E-01", TipoDrone.EXPRESS, 45, true, EstadoDrone.DISPONIBLE);
+    private final Drone m01 = new Drone("M-01", TipoDrone.MINI, 80, true, EstadoDrone.DISPONIBLE, 12);
+    private final Drone m02 = new Drone("M-02", TipoDrone.MINI, 60, true, EstadoDrone.DISPONIBLE, 5);
+    private final Drone c01 = new Drone("C-01", TipoDrone.CARGO, 90, false, EstadoDrone.EN_VUELO, 3);
+    private final Drone e01 = new Drone("E-01", TipoDrone.EXPRESS, 45, true, EstadoDrone.DISPONIBLE, 20);
 
     private Mision mision(String id, Drone d, Prioridad p, EstadoMision e, int minutosAtras) {
         return new Mision(id, d, "Biblioteca", 300, p, e, AHORA.minusMinutes(minutosAtras));
