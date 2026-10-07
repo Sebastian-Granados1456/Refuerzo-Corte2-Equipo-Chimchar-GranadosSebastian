@@ -1,9 +1,14 @@
 package edu.eci.skycampus.streams;
 
+import edu.eci.skycampus.model.Drone;
+
 import java.util.Comparator;
 import java.util.List;
 
 public class ConsultasFlota {
+
+    private ConsultasFlota() {
+    }
 
     public static List<String> disponiblesConBateriaAlta(List<Drone> flota) {
         return flota.stream()
