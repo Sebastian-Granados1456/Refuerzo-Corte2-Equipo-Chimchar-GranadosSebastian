@@ -7,6 +7,9 @@ import java.util.List;
 
 public class ConsultasFlota {
 
+    private ConsultasFlota() {
+    }
+
     public static List<String> disponiblesConBateriaAlta(List<Drone> flota) {
         return flota.stream()
                 .filter(d -> d.disponible() && d.bateria() >= 50)

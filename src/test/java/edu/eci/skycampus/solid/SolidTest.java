@@ -6,10 +6,12 @@ import edu.eci.skycampus.model.Mision;
 import edu.eci.skycampus.model.TipoCarga;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -53,15 +55,20 @@ class SolidTest {
     }
 
     @Test
-    void alertaConsola_imprimeOperadorYMensaje() {
-        PrintStream original = System.out;
-        ByteArrayOutputStream salida = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(salida));
+    void alertaConsola_registraOperadorYMensaje() {
+        Logger logger = Logger.getLogger(AlertaConsola.class.getName());
+        List<String> registros = new ArrayList<>();
+        Handler captura = new Handler() {
+            @Override public void publish(LogRecord r) { registros.add(new SimpleFormatter().formatMessage(r)); }
+            @Override public void flush() { }
+            @Override public void close() { }
+        };
+        logger.addHandler(captura);
         try {
             new AlertaConsola().enviar("Operador", "Prueba");
         } finally {
-            System.setOut(original);
+            logger.removeHandler(captura);
         }
-        assertTrue(salida.toString().contains("[Alerta a Operador] Prueba"));
+        assertEquals(List.of("[Alerta a Operador] Prueba"), registros);
     }
 }

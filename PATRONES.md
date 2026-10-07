@@ -1,14 +1,9 @@
-# Reto 03 - Patrones de diseño (Chimchar)
+# Reto 03 - Patrones de diseño
 
 | Problema | Patrón | Por qué |
-|---|---|---|
-| 1. `Mision` con campos obligatorios y opcionales | **Builder** | Permite construir la misión paso a paso dando solo los campos necesarios, sin un constructor por cada combinación. |
-| 2. Validaciones en orden antes de lanzar el drone | **Chain of Responsibility** | Cada validador revisa una sola regla y decide si rechaza la misión o la pasa al siguiente. |
-| 3. Algoritmo de asignación de drone intercambiable | **Strategy** | Cada algoritmo vive en su propia clase y se cambia sin tocar `AsignadorDrone`. |
+| --- | --- | --- |
+| Misión con campos obligatorios y opcionales | Builder | Construye la misión paso a paso solo con los campos necesarios. |
+| Validaciones en orden antes del vuelo | Chain of Responsibility | Cada validador revisa una regla y rechaza o pasa al siguiente. |
+| Algoritmo de asignación intercambiable | Strategy | Cada algoritmo está en su clase y se cambia sin tocar el asignador. |
 
-## Dónde está el código
-
-- Builder: `src/main/java/edu/eci/skycampus/patrones/builder/MisionBuilder.java`
-- Chain: `src/main/java/edu/eci/skycampus/patrones/chain/` (`Validador`, `ValidadorBateria`, `ValidadorDestino`, `ValidadorCarga`)
-- Strategy: `src/main/java/edu/eci/skycampus/patrones/strategy/` (`EstrategiaAsignacion`, `MayorBateria`, `AsignadorDrone`)
-- Demo: `src/main/java/edu/eci/skycampus/patrones/Main.java`
+Código en `src/main/java/edu/eci/skycampus/patrones/`.
