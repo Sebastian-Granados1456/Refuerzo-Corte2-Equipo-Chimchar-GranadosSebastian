@@ -1,0 +1,147 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="CU Módulo de Misiones v2" id="cu-modulo-mision-v2">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;Diagrama de casos de uso — Módulo de Misiones (SkyCampus v2)&lt;/b&gt;&lt;br&gt;Herencia de actores: Técnico de mantenimiento extiende Operador" style="text;html=1;align=left;verticalAlign=top;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="200" y="0" width="900" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Límite del sistema -->
+        <mxCell id="sistema" value="SkyCampus v2 — Módulo de Misiones" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=center;fontStyle=1;fontSize=14;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="900" height="900" as="geometry" />
+        </mxCell>
+
+        <!-- Actores -->
+        <mxCell id="operador" value="Operador de drones" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tecnico" value="Técnico de mantenimiento" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Generalización Técnico -> Operador -->
+        <mxCell id="gen1" value="" style="endArrow=block;endFill=0;endSize=16;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="tecnico" target="operador">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="solicitante" value="Solicitante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="820" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- CU principales -->
+        <mxCell id="cu1" value="Registrar misión" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="420" y="110" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu2" value="Ver flota de drones" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="420" y="240" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu3" value="Cancelar misión pendiente" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="420" y="370" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cu4" value="Marcar drone reparado" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="420" y="500" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Includes (CU de soporte) -->
+        <mxCell id="i1" value="Validar condiciones climáticas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="100" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="i2" value="Aplicar estrategia de asignación" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="220" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Extends con condición -->
+        <mxCell id="e1" value="Priorizar drone más rápido" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="340" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" value="Notificar alerta de fallo" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="460" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- CU del Solicitante -->
+        <mxCell id="s1" value="Solicitar reparto de documento" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="630" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s2" value="Consultar estado de la misión" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="760" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- CU del Admin -->
+        <mxCell id="a1" value="Configurar destinos fijos" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="630" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a2" value="Registrar drone en la flota" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="760" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Asociaciones actor - CU -->
+        <mxCell id="as1" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cu1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="as2" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cu2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="as3" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cu3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="as4" style="endArrow=none;html=1;" edge="1" parent="1" source="tecnico" target="cu4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="as5" style="endArrow=none;html=1;" edge="1" parent="1" source="solicitante" target="s1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="as6" style="endArrow=none;html=1;" edge="1" parent="1" source="solicitante" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="as7" style="endArrow=none;html=1;" edge="1" parent="1" source="admin" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="as8" style="endArrow=none;html=1;" edge="1" parent="1" source="admin" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- include: del CU base al incluido -->
+        <mxCell id="in1" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cu1" target="i1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cu1" target="i2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- extend: del CU que extiende al CU base, con condición -->
+        <mxCell id="ex1" value="«extend»&lt;br&gt;[prioridad = URGENTE]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="e1" target="cu1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ex2" value="«extend»&lt;br&gt;[drone entra en estado FALLO]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="e2" target="cu2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nota" value="Técnico de mantenimiento hereda (generalización UML) los CU de Operador: puede ver la flota y el estado de cada drone, además de su CU exclusivo (Marcar drone reparado)." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="560" width="260" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
