@@ -1,0 +1,103 @@
+git add -A<mxfile host="app.diagrams.net">
+  <diagram name="C4 Contexto - SkyCampus v2" id="c4-contexto-v2">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;[Diagrama de Contexto] SkyCampus v2 (Monferno)&lt;/b&gt;&lt;br&gt;Nivel 1 del modelo C4 — azul/amarillo: sistema propio · rojo: sistema externo" style="text;html=1;align=left;verticalAlign=top;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="700" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Actores (azul, igual que el MVP) -->
+        <mxCell id="operador" value="&lt;b&gt;Operador de drones&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Supervisa la flota y las misiones" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="60" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="solicitante" value="&lt;b&gt;Solicitante&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Pide el reparto de un documento" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="0" y="440" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="admin" value="&lt;b&gt;Admin&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Configura destinos y flota" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="0" y="820" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tecnico" value="&lt;b&gt;Técnico de mantenimiento&lt;/b&gt;&lt;br&gt;[Persona] — NUEVO&lt;br&gt;&lt;br&gt;Atiende drones en estado FALLO" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="820" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Sistema central -->
+        <mxCell id="sistema" value="&lt;b&gt;SkyCampus App v2&lt;/b&gt;&lt;br&gt;[Sistema de software]&lt;br&gt;&lt;br&gt;Asigna automáticamente drones según peso, batería y prioridad; notifica cambios de estado en tiempo real" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;arcSize=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="440" width="320" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Sistemas externos (rojo, nuevos en v2) -->
+        <mxCell id="clima" value="&lt;b&gt;API Meteorológica&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Provee condiciones de viento y lluvia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="60" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="controlAereo" value="&lt;b&gt;Control Aéreo ECI&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Autoriza y registra rutas de vuelo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="280" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="alertas" value="&lt;b&gt;Sistema de Alertas&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Envía notificaciones de fallo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="500" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Solicitante (igual que el MVP) -->
+        <mxCell id="e1" value="Envía solicitud de reparto&lt;br&gt;(origen, destino, tipo de carga, peso, prioridad)" style="endArrow=classic;html=1;fontSize=10;exitX=1;exitY=0.35;entryX=0;entryY=0.35;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="solicitante" target="sistema">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="-22" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="Devuelve código de misión&lt;br&gt;y estado de la entrega" style="endArrow=classic;html=1;fontSize=10;exitX=0;exitY=0.65;entryX=1;entryY=0.65;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="solicitante">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="22" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Operador (igual que el MVP) -->
+        <mxCell id="e3" value="Monitorea la flota y confirma&lt;br&gt;entregas" style="endArrow=classic;html=1;fontSize=10;exitX=0.35;exitY=1;entryX=0.35;entryY=0;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="operador" target="sistema">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="-85" y="0" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="Notifica estado de cada drone&lt;br&gt;(DISPONIBLE/EN_VUELO/ATERRIZANDO/FALLO)" style="endArrow=classic;html=1;fontSize=10;exitX=0.65;exitY=0;entryX=0.65;entryY=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="operador">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="90" y="0" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Admin (igual que el MVP) -->
+        <mxCell id="e5" value="Registra drones&lt;br&gt;y destinos fijos" style="endArrow=classic;html=1;fontSize=10;exitX=1;exitY=0.3;entryX=0;entryY=0.3;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="admin" target="sistema">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="-22" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="Muestra la configuración&lt;br&gt;actual de flota y destinos" style="endArrow=classic;html=1;fontSize=10;exitX=0;exitY=0.55;entryX=1;entryY=0.55;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="admin">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="0" y="22" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Técnico (nuevo) -->
+        <mxCell id="e7" value="Marca el drone como&lt;br&gt;reparado / disponible" style="endArrow=classic;html=1;fontSize=10;exitX=0.65;exitY=0;entryX=1;entryY=0.7;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="tecnico" target="sistema">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Notifica qué drone entró&lt;br&gt;en estado FALLO" style="endArrow=classic;html=1;fontSize=10;exitX=1;exitY=0.85;entryX=0.35;entryY=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="tecnico">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API Meteorológica (nuevo) -->
+        <mxCell id="e9" value="← Responde condiciones de&lt;br&gt;viento y lluvia del destino" style="endArrow=classic;html=1;fontSize=10;exitX=0;exitY=0.5;entryX=1;entryY=0.25;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="clima" target="sistema">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Control Aéreo ECI (nuevo, bidireccional) -->
+        <mxCell id="e10" value="→ Solicita autorización de ruta&lt;br&gt;antes de lanzar el drone" style="endArrow=classic;html=1;fontSize=10;exitX=1;exitY=0.3;entryX=0;entryY=0.3;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="controlAereo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="← Devuelve autorización y&lt;br&gt;registra el vuelo" style="endArrow=classic;html=1;fontSize=10;exitX=0;exitY=0.7;entryX=1;entryY=0.7;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="controlAereo" target="sistema">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sistema de Alertas (nuevo) -->
+        <mxCell id="e12" value="→ Envía notificación de fallo&lt;br&gt;(ID de drone, ubicación, hora)" style="endArrow=classic;html=1;fontSize=10;exitX=1;exitY=0.6;entryX=0;entryY=0.5;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="alertas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nota" value="v2: por primera vez SkyCampus integra 3 sistemas externos reales (clima, control aéreo, alertas). El MVP no tenía ninguno." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="700" width="320" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
