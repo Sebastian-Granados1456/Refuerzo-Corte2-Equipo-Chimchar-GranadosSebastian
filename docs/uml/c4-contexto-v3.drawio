@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="C4 Contexto - SkyCampus Enterprise" id="c4-contexto-v3">
+    <mxGraphModel dx="1700" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;[Diagrama de Contexto] SkyCampus Enterprise (Infernape)&lt;/b&gt;&lt;br&gt;Nivel 1 del modelo C4 — azul: sistema propio · rojo: sistema externo" style="text;html=1;align=left;verticalAlign=top;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="760" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Actores (azul) -->
+        <mxCell id="operador" value="&lt;b&gt;Operador de drones&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Supervisa flota y misiones de su sede" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="60" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="solicitante" value="&lt;b&gt;Solicitante&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Pide el reparto de un documento" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="0" y="420" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="admin" value="&lt;b&gt;Admin&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Configura destinos y flota de su sede" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="0" y="790" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tecnico" value="&lt;b&gt;Técnico de mantenimiento&lt;/b&gt;&lt;br&gt;[Persona]&lt;br&gt;&lt;br&gt;Atiende drones en estado FALLO" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="790" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="superadmin" value="&lt;b&gt;Superadministrador&lt;/b&gt;&lt;br&gt;[Persona] — NUEVO&lt;br&gt;&lt;br&gt;Administra la red completa (4 sedes)" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="60" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="coordinador" value="&lt;b&gt;Coordinador de sede&lt;/b&gt;&lt;br&gt;[Persona] — NUEVO&lt;br&gt;&lt;br&gt;Administra una sede de la red" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="240" width="190" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Sistema central -->
+        <mxCell id="sistema" value="&lt;b&gt;SkyCampus Enterprise&lt;/b&gt;&lt;br&gt;[Sistema de software]&lt;br&gt;&lt;br&gt;Red de reparto con drones entre ECI, UNAL, Uniandes y EAFIT. Rutas multi-etapa, analytics por sede." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;arcSize=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="460" width="340" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- Sistemas externos (rojo) -->
+        <mxCell id="clima" value="&lt;b&gt;API Meteorológica&lt;/b&gt;&lt;br&gt;[Sistema externo]&lt;br&gt;&lt;br&gt;Condiciones de vuelo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="850" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="controlAereo" value="&lt;b&gt;Control Aéreo&lt;/b&gt;&lt;br&gt;[Sistema externo]&lt;br&gt;&lt;br&gt;Autoriza rutas por sede" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="850" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="alertas" value="&lt;b&gt;Sistema de Alertas&lt;/b&gt;&lt;br&gt;[Sistema externo]&lt;br&gt;&lt;br&gt;Notifica fallos de drone" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="850" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aerocivil" value="&lt;b&gt;Aerocivil&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Regula vuelos inter-sede" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="60" width="190" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="erp" value="&lt;b&gt;ERP universitario&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Datos de usuarios por sede" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="190" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="analytics" value="&lt;b&gt;Analytics platform&lt;/b&gt;&lt;br&gt;[Sistema externo] — NUEVO&lt;br&gt;&lt;br&gt;Recibe métricas de eficiencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;arcSize=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="420" width="190" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Flujos actores -->
+        <mxCell id="e1" value="Monitorea flota y confirma entregas" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="operador" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" value="Envía solicitud de reparto" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="solicitante" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="Configura destinos y flota" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="admin" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="Marca drone reparado" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="tecnico" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" value="Administra red completa" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="superadmin" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" value="Administra su sede" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="coordinador" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Flujos sistemas externos -->
+        <mxCell id="e7" value="← condiciones de vuelo" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="clima" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" value="↔ autorización de ruta" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="controlAereo" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" value="→ alerta de fallo" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="alertas"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" value="↔ autorización inter-sede" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="aerocivil" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e11" value="← datos de usuarios por sede" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="erp" target="sistema"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" value="→ métricas de eficiencia" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sistema" target="analytics"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
