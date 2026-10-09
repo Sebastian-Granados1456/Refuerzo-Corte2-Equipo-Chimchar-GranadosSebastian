@@ -14,12 +14,20 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EstadisticasSedeTest {
 
     private static MisionEnterprise mision(Sede sede, String droneId, EstadoMision estado, Prioridad prioridad, long minutos) {
         return new MisionEnterprise("M-" + droneId, sede, droneId, estado, prioridad, minutos);
+    }
+
+    // Hotfix v3.0.1: minutosEntrega negativo rompía el promedio de EstadisticasSede
+    @Test
+    void minutosEntregaNegativo_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class,
+                () -> mision(Sede.ECI, "D-01", EstadoMision.ENTREGADA, Prioridad.NORMAL, -5));
     }
 
     // 1. Sede vacía: no hay misiones para ECI -> Optional.empty()
