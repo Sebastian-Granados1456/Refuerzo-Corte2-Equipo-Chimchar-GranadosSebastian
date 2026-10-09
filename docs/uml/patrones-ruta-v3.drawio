@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Patrones de rutas multi-etapa" id="patrones-ruta-v3">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;Arquitectura de rutas multi-etapa — SkyCampus Enterprise&lt;/b&gt;&lt;br&gt;Composite + Strategy + Observer + Factory Method" style="text;html=1;align=left;verticalAlign=top;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="800" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- COMPOSITE -->
+        <mxCell id="t1" value="1. Composite — ruta simple o multi-etapa" style="text;html=1;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="360" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="componenteRuta" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;ComponenteRuta&lt;/b&gt;&lt;hr&gt;+ distanciaKm(): int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etapa" value="&lt;b&gt;Etapa&lt;/b&gt; (hoja)&lt;hr&gt;origen, destino, distanciaKm" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="190" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rutaCompuesta" value="&lt;b&gt;RutaCompuesta&lt;/b&gt; (compuesto)&lt;hr&gt;- etapas: List&amp;lt;ComponenteRuta&amp;gt;&lt;br&gt;+ agregar(ComponenteRuta)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="200" y="190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="etapa" target="componenteRuta"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="rutaCompuesta" target="componenteRuta"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="contiene *" style="endArrow=diamondThin;endFill=1;html=1;fontSize=10;" edge="1" parent="1" source="rutaCompuesta" target="componenteRuta"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- STRATEGY -->
+        <mxCell id="t2" value="2. Strategy — algoritmo de optimización" style="text;html=1;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="440" y="50" width="360" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="estrategia" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;EstrategiaOptimizacion&lt;/b&gt;&lt;hr&gt;+ calcular(origen, destino, km): RutaCompuesta" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="90" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="directa" value="&lt;b&gt;RutaDirectaSiAlcanza&lt;/b&gt;&lt;hr&gt;≤ 5km: una sola etapa" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="190" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="conCarga" value="&lt;b&gt;RutaConEstacionCarga&lt;/b&gt;&lt;hr&gt;&gt; 5km: dos etapas + estación" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="190" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="directa" target="estrategia"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="conCarga" target="estrategia"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- OBSERVER -->
+        <mxCell id="t3" value="3. Observer — alertas de cada etapa" style="text;html=1;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="360" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ejecutor" value="&lt;b&gt;EjecutorRuta&lt;/b&gt;&lt;hr&gt;- observadores: List&amp;lt;ObservadorRuta&amp;gt;&lt;br&gt;+ suscribir(ObservadorRuta)&lt;br&gt;+ ejecutar(RutaCompuesta)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="340" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="observadorRuta" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;ObservadorRuta&lt;/b&gt;&lt;hr&gt;+ onEtapaCompletada(Etapa)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="330" y="340" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="notifica *" style="endArrow=open;endFill=0;html=1;fontSize=10;" edge="1" parent="1" source="ejecutor" target="observadorRuta"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FACTORY METHOD -->
+        <mxCell id="t4" value="4. Factory Method — tipo de drone por etapa" style="text;html=1;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fabrica" value="&lt;b&gt;FabricaDroneEtapa&lt;/b&gt; (abstracta)&lt;hr&gt;+ crearDrone(pesoGramos): TipoDrone&lt;br&gt;+ paraPeso(pesoGramos): FabricaDroneEtapa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="340" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fMini" value="FabricaDroneMini" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="440" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fExpress" value="FabricaDroneExpress" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="440" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fCargo" value="FabricaDroneCargo" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="440" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="fMini" target="fabrica"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="fExpress" target="fabrica"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" style="endArrow=block;endFill=0;html=1;" edge="1" parent="1" source="fCargo" target="fabrica"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
