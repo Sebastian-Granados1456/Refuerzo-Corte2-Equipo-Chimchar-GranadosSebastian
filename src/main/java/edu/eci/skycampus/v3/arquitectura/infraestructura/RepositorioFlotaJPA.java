@@ -13,4 +13,9 @@ public class RepositorioFlotaJPA implements RepositorioFlota {
     public List<DroneEnterprise> findDisponibles(Sede sede) {
         throw new UnsupportedOperationException("Requiere una base de datos real; fuera del alcance de este reto");
     }
+
+    @Override
+    public boolean sedeActiva(Sede sede) {
+        throw new UnsupportedOperationException("Requiere una base de datos real; fuera del alcance de este reto");
+    }
 }
