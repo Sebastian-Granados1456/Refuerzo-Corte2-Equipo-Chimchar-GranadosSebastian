@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="C4 Contenedores - SkyCampus Enterprise" id="c4-contenedores-v3">
+    <mxGraphModel dx="1700" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;[Diagrama de Contenedores] SkyCampus Enterprise&lt;/b&gt;&lt;br&gt;Nivel 2 del modelo C4" style="text;html=1;align=left;verticalAlign=top;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="600" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Usuarios -->
+        <mxCell id="operador" value="Operador / Admin / Técnico&lt;br&gt;[Persona, por sede]" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="superadmin" value="Superadmin / Coordinador&lt;br&gt;[Persona, red completa]" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="230" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Límite del sistema -->
+        <mxCell id="limite" value="SkyCampus Enterprise" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=center;fontStyle=1;fontSize=13;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="60" width="1240" height="700" as="geometry" />
+        </mxCell>
+
+        <!-- Contenedores frontend -->
+        <mxCell id="appWeb" value="&lt;b&gt;App Web Operadores&lt;/b&gt;&lt;br&gt;[Contenedor: por sede]&lt;br&gt;&lt;br&gt;Panel de flota y misiones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="panelSuperadmin" value="&lt;b&gt;Panel Superadmin&lt;/b&gt;&lt;br&gt;[Contenedor]&lt;br&gt;&lt;br&gt;Vista de la red completa" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="260" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Gateway -->
+        <mxCell id="gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;[Contenedor]&lt;br&gt;&lt;br&gt;Enruta a los servicios" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="185" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Servicios -->
+        <mxCell id="servMisiones" value="&lt;b&gt;Servicio de Misiones&lt;/b&gt;&lt;br&gt;[Contenedor]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="80" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="servFlota" value="&lt;b&gt;Servicio de Flota&lt;/b&gt;&lt;br&gt;[Contenedor]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="180" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="servRutas" value="&lt;b&gt;Servicio de Rutas&lt;/b&gt;&lt;br&gt;[Contenedor]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="280" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="servAnalytics" value="&lt;b&gt;Servicio de Analytics&lt;/b&gt;&lt;br&gt;[Contenedor]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="380" width="190" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- BDs -->
+        <mxCell id="bdMisiones" value="&lt;b&gt;BD Misiones&lt;/b&gt;&lt;br&gt;[Contenedor: BD]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="480" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bdFlota" value="&lt;b&gt;BD Flota&lt;/b&gt;&lt;br&gt;[Contenedor: BD]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="580" width="110" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Sistemas externos (rojo) -->
+        <mxCell id="apiClima" value="API Clima /&lt;br&gt;Aerocivil&lt;br&gt;[Sistema externo]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="290" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="plataformaAnalytics" value="Plataforma&lt;br&gt;Analytics&lt;br&gt;[Sistema externo]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3372C;strokeColor=#8C241B;fontColor=#ffffff;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="390" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Flujos usuarios -->
+        <mxCell id="f1" value="HTTPS" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="operador" target="appWeb"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" value="HTTPS" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="superadmin" target="panelSuperadmin"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Flujos al gateway -->
+        <mxCell id="f3" value="HTTPS" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="appWeb" target="gateway"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" value="HTTPS" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="panelSuperadmin" target="gateway"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Gateway -> servicios -->
+        <mxCell id="f5" value="interno" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="gateway" target="servMisiones"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" value="interno" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="gateway" target="servFlota"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f7" value="interno" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="gateway" target="servRutas"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f8" value="interno" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="gateway" target="servAnalytics"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Servicios -> BD -->
+        <mxCell id="f9" value="JDBC" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="servMisiones" target="bdMisiones"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f10" value="JDBC" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="servFlota" target="bdFlota"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Servicios -> sistemas externos -->
+        <mxCell id="f11" value="HTTP" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="servRutas" target="apiClima"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f12" value="REST" style="endArrow=classic;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="servAnalytics" target="plataformaAnalytics"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

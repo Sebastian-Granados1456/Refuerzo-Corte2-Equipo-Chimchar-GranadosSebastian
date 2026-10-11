@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="CU Enterprise - 5 paquetes" id="cu-enterprise-v3">
+    <mxGraphModel dx="2200" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="&lt;b&gt;Diagrama de casos de uso — SkyCampus Enterprise&lt;/b&gt;&lt;br&gt;5 paquetes · herencia de actores: Superadmin → Coordinador de sede → Operador" style="text;html=1;align=left;verticalAlign=top;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="900" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Actores base (izquierda) -->
+        <mxCell id="operador" value="Operador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="solicitante" value="Solicitante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1240" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tecnico" value="Técnico de mantenimiento" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="960" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Herencia: Coordinador extiende Operador, Superadmin extiende Coordinador -->
+        <mxCell id="coordinador" value="Coordinador de sede" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="superadmin" value="Superadmin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gen1" value="" style="endArrow=block;endFill=0;endSize=16;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="coordinador" target="operador">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen2" value="" style="endArrow=block;endFill=0;endSize=16;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="superadmin" target="coordinador">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- PAQUETE: Gestión de Misiones -->
+        <mxCell id="pkgMisiones" value="Gestión de Misiones" style="shape=folder;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="420" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="cuVerPendientes" value="Ver solicitudes pendientes" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="270" y="90" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuCrearMision" value="Crear misión" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="470" y="90" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuCancelarMision" value="Cancelar misión" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="270" y="170" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuVerHistorial" value="Ver historial" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="470" y="170" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuValidarAerocivilM" value="Validar autorización Aerocivil" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="270" y="250" width="200" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="asSolMision" style="endArrow=none;html=1;" edge="1" parent="1" source="solicitante" target="cuCrearMision"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asOpPendientes" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuVerPendientes"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asOpCancelar" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuCancelarMision"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asOpHistorial" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuVerHistorial"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="incCrearValida" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuCrearMision" target="cuValidarAerocivilM"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PAQUETE: Gestión de Flota -->
+        <mxCell id="pkgFlota" value="Gestión de Flota" style="shape=folder;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="370" width="420" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="cuVerEstadoDrones" value="Ver estado de drones" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="270" y="420" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuAsignarDrone" value="Asignar drone" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="470" y="420" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuTransferirDrone" value="Transferir drone entre sedes" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="270" y="500" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuVerAnalytics" value="Ver analytics" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="470" y="500" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuElegirDroneEtapa" value="Elegir tipo de drone por etapa" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="270" y="580" width="200" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="asOpEstado" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuVerEstadoDrones"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asOpAsignar" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuAsignarDrone"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asCoordTransferir" style="endArrow=none;html=1;" edge="1" parent="1" source="coordinador" target="cuTransferirDrone"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asCoordAnalytics" style="endArrow=none;html=1;" edge="1" parent="1" source="coordinador" target="cuVerAnalytics"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="incAsignarElige" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuAsignarDrone" target="cuElegirDroneEtapa"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PAQUETE: Rutas y Navegación -->
+        <mxCell id="pkgRutas" value="Rutas y Navegación" style="shape=folder;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="420" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="cuRutaSimple" value="Calcular ruta simple" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="750" y="90" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuRutaMultiEtapa" value="Calcular ruta multi-etapa" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="950" y="90" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuAutorizarAerocivil" value="Autorizar con Aerocivil" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="750" y="170" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuAsignarEstacion" value="Asignar estación de carga" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="950" y="170" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuConfigurarRadio" value="Configurar radio de vuelo" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="750" y="250" width="200" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="asOpRutaSimple" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuRutaSimple"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asOpRutaMulti" style="endArrow=none;html=1;" edge="1" parent="1" source="operador" target="cuRutaMultiEtapa"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asCoordRadio" style="endArrow=none;html=1;" edge="1" parent="1" source="coordinador" target="cuConfigurarRadio"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="incRutaAutoriza" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuRutaMultiEtapa" target="cuAutorizarAerocivil"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="extEstacion" value="«extend»&lt;br&gt;[distancia &gt; 5km]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuAsignarEstacion" target="cuRutaMultiEtapa"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PAQUETE: Mantenimiento -->
+        <mxCell id="pkgMantenimiento" value="Mantenimiento" style="shape=folder;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="720" y="370" width="420" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="cuDiagnosticar" value="Diagnosticar fallo" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="750" y="420" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuMarcarMantenimiento" value="Marcar en mantenimiento" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="950" y="420" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuAprobarRetorno" value="Aprobar retorno a servicio" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="750" y="500" width="200" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="asTecDiag" style="endArrow=none;html=1;" edge="1" parent="1" source="tecnico" target="cuDiagnosticar"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asTecAprobar" style="endArrow=none;html=1;" edge="1" parent="1" source="tecnico" target="cuAprobarRetorno"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="incDiagMarca" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuDiagnosticar" target="cuMarcarMantenimiento"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PAQUETE: Administración -->
+        <mxCell id="pkgAdmin" value="Administración" style="shape=folder;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="690" width="900" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="cuConfigurarSede" value="Configurar sede" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="270" y="740" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuGestionarUsuarios" value="Gestionar usuarios" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="470" y="740" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuVerDashboard" value="Ver dashboard Enterprise" style="ellipse;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1"><mxGeometry x="670" y="740" width="180" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuGenerarReportes" value="Generar reportes" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="870" y="740" width="150" height="55" as="geometry" /></mxCell>
+        <mxCell id="cuNotificarErp" value="Sincronizar usuarios con ERP" style="ellipse;whiteSpace=wrap;html=1;fontSize=9;" vertex="1" parent="1"><mxGeometry x="470" y="820" width="150" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="asAdminConfig" style="endArrow=none;html=1;" edge="1" parent="1" source="admin" target="cuConfigurarSede"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asAdminUsuarios" style="endArrow=none;html=1;" edge="1" parent="1" source="admin" target="cuGestionarUsuarios"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asSuperDashboard" style="endArrow=none;html=1;" edge="1" parent="1" source="superadmin" target="cuVerDashboard"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="asSuperReportes" style="endArrow=none;html=1;" edge="1" parent="1" source="superadmin" target="cuGenerarReportes"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="incUsuariosErp" value="«include»" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuGestionarUsuarios" target="cuNotificarErp"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="extDashboardAlerta" value="«extend»&lt;br&gt;[hay drones en estado FALLO]" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cuDiagnosticar" target="cuVerDashboard"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1000" y="700"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="nota" value="Herencia de actores: Coordinador de sede extiende Operador (hereda Gestión de Misiones y Flota de su sede). Superadmin extiende Coordinador (hereda todo, más Administración y Analytics de la red completa)." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="180" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
