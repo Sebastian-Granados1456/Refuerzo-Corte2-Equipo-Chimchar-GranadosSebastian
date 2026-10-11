@@ -61,8 +61,8 @@ class PatronesRutaTest {
     // Factory Method: cada fábrica crea el tipo de drone correcto según el peso de la etapa
     @Test
     void fabricaDroneEtapa_eligeTipoSegunPeso() {
-        assertEquals(TipoDrone.MINI, FabricaDroneEtapa.paraPeso(300).crearDrone(300));
-        assertEquals(TipoDrone.EXPRESS, FabricaDroneEtapa.paraPeso(700).crearDrone(700));
-        assertEquals(TipoDrone.CARGO, FabricaDroneEtapa.paraPeso(1500).crearDrone(1500));
+        assertEquals(TipoDrone.MINI, FabricasDroneEtapa.paraPeso(300).crearDrone(300));
+        assertEquals(TipoDrone.EXPRESS, FabricasDroneEtapa.paraPeso(700).crearDrone(700));
+        assertEquals(TipoDrone.CARGO, FabricasDroneEtapa.paraPeso(1500).crearDrone(1500));
     }
 }
